@@ -1,7 +1,10 @@
 ---
 title: "About"
-image: images/sun_about.jpg
-about: trying to get better at math by communicating and sharing math; feel free to question, criticize and improvize this page
+image: sun_about.jpg
+
+##About Me
+
+trying to get better at math by communicating and sharing math; feel free to question, criticize and improvize this page
   template: jolla
   links:
     - icon: twitter
