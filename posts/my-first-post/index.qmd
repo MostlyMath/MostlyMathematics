@@ -1,6 +1,6 @@
 ---
 title: "First Post"
 date: 2025-09-05
-categories: [analysis, code]
+categories: [Analysis, Algebra, Complex Analysis]
 ---
 

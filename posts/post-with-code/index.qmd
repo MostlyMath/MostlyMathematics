@@ -1,6 +1,6 @@
 ---
 title: "Second Post"
 date: "2025-09-07"
-categories: [news, code, analysis]
+categories: [Topology, Analysis]
 ---
 

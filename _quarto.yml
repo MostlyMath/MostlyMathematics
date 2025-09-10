@@ -12,6 +12,22 @@ website:
         text: About
       - href: posts
         text: Posts
+      - text: Categories
+        menu:
+          - text: Algebra
+            href: categories/algebra.qmd
+          - text: Analysis
+            href: categories/analysis.qmd
+          - text: Topology
+            href: categories/topology.qmd
+          - text: Dynamics
+            href: categories/dynamics.qmd
+          - text: Complex Analysis
+            href: categories/complex_analysis.qmd
+          - text: Linear Algebra
+            href: categories/linear_algebra.qmd
+          - text: Probability
+            href: categories/probability.qmd
   sidebar:
     style: "docked"
     contents: auto
@@ -24,4 +40,5 @@ format:
   html:
     theme: flatly
     css: styles.css
+    
     
