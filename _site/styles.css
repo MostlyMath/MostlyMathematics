@@ -1,1 +1,10 @@
-/* css styles */
+/* Make about image circular and small */
+.sidebar-about img {
+  border-radius: 50%;     /* circle */
+  width: 120px;           /* shrink size */
+  height: 120px;          /* keep square */
+  object-fit: cover;      /* crop nicely */
+  display: block;
+  margin: 0 auto 1em;     /* center it */
+}
+

@@ -1,7 +1,6 @@
-title: "My First Post"
-date: 2025-09-07
+---
+title: "First Post"
+date: 2025-09-05
+categories: [analysis, code]
 ---
 
-#Hello World
-
-This is my first blog post on MostlyMathematics!

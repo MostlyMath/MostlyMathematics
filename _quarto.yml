@@ -1,9 +1,9 @@
 project:
   type: website
-  output-dir: docs   # GitHub Pages will serve from here
+  output-dir: docs
 
 website:
-  title: "MostlyMathematics"
+  title: "Mostly Mathematics"
   navbar:
     left:
       - href: index.qmd
@@ -12,7 +12,16 @@ website:
         text: About
       - href: posts
         text: Posts
+  sidebar:
+    style: "docked"
+    contents: auto
+    about:
+      image: sun_about.jpg   # your image file
+      text: |
+       Getting better at math by communicating math.
+
 format:
   html:
-    theme: cosmo
+    theme: flatly
     css: styles.css
+    

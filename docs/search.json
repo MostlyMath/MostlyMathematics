@@ -1,30 +1,20 @@
 [
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
-    "objectID": "posts/my-first-post/index.html",
-    "href": "posts/my-first-post/index.html",
-    "title": "MostlyMathematics",
-    "section": "",
-    "text": "title: “My First Post” date: 2025-09-07 —\n#Hello World\nThis is my first blog post on MostlyMathematics!"
+    "text": "About\n\n\nTrying to get better at math by communicating and sharing math; feel free to question, criticize, and improvise this page.",
+    "crumbs": [
+      "Home",
+      "About"
+    ]
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "mathblog",
+    "title": "Mostly Mathematics",
     "section": "",
-    "text": "date: 2025-09-07\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nSep 7, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nSep 4, 2025\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code."
+    "text": "Mostly Mathematics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhy period three implies chaos and a dive into the phenomenal paber by Li and Yorke\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nSecond Post\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nSep 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Post\n\n\n\nanalysis\n\ncode\n\n\n\n\n\n\n\n\n\nSep 5, 2025\n\n\n\n\n\nNo matching items"
   }
 ]

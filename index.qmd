@@ -1,5 +1,7 @@
 ---
-title: "mathblog"
+title: ""
+page-layout: full
+title-block-banner: sun_about.jpg
 listing:
   contents: posts
   feed: true
@@ -8,8 +10,8 @@ listing:
   categories: true
   sort-ui: false
   filter-ui: false
-page-layout: full
-title-block-banner: true
 ---
+
+# Mostly Mathematics
 
 

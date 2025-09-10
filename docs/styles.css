@@ -1,1 +1,17 @@
-/* css styles */
+
+/* Make post titles use full width (no reserved space for thumbnails) */
+.listing-title {
+  flex: 1 1 auto !important;   /* allow titles to take the full width */
+  max-width: 100% !important;  /* ensure they expand */
+}
+
+/* Reduce homepage post title font size */
+.listing-title {
+  font-size: 0.9rem !important; /* adjust size as you like (default ~1.3-1.5rem) */
+  line-height: 1.3 !important;
+}
+
+/* Optional: tighten spacing under the title */
+.listing-description {
+  margin-top: 0.25rem;
+}
