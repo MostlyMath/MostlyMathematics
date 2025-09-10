@@ -1,5 +1,5 @@
 ---
-title: "Why period three implies chaos and a  dive into the phenomenal paber by Li and Yorke"
+title: "Why period three implies chaos and a  dive into the phenomenal paper by Li and Yorke"
 date: "2025-09-10"
 categories: [Topology]
 ---
