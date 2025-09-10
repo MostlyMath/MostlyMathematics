@@ -1,4 +1,8 @@
 
+body {
+  background: yellow !important;
+}
+
 /* Make post titles use full width (no reserved space for thumbnails) */
 .listing-title {
   flex: 1 1 auto !important;   /* allow titles to take the full width */
