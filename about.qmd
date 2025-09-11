@@ -2,13 +2,12 @@
 title: ""
 page-title: false
 ---
-<div class="page-hero"></div>
+
 
 <h1 style="text-align: center; margin-top: 30px;">About</h1>
 
 <div style="text-align: center; margin-top: 15px; font-size: 1.1rem;">
-  Trying to get better at math by communicating and sharing math;  
-  feel free to question, criticize, and improvise this page.
+  Hey everyone! This is Aparna Bade, a mathematics graduate from IISER Thiruvananthapuram. I am trying to get better at math by communicating and sharing it. I want to try and post short intuitive snippets to elaboarate proofs of fun theorems. Feel free to question, criticize, and improvise this page.
 </div>
 
 
