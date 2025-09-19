@@ -1,5 +1,17 @@
 [
   {
+    "objectID": "posts/my-first-post/index.html",
+    "href": "posts/my-first-post/index.html",
+    "title": "Poincaré Recurrence",
+    "section": "",
+    "text": "When we talk of dynamical systems, the basic idea is that we pick a space \\(X\\), choose a rule \\(T: X \\to X\\), and then we keep applying that rule over and over again to a point \\(x \\in X\\).\nSo if we start with \\(x\\), then apply \\(T\\), we obtain \\(T(x)\\). Applying it again, we obtain \\(T^2(x)\\), then \\(T^3(x)\\), and so on. The sequence\n\\[\nx, \\; T(x), \\; T^2(x), \\; T^3(x), \\dots\n\\]\nis called the orbit of \\(x\\) under \\(T\\) which is the most natural object to study since the orbit tells us the future path of the point.\nNow a good question to ask would be: What happens to these orbits in the longer run? One can wonder if they keep running away to new territories forever? Or if they loop back and revisit old places? Or if they somehow spread out evenly across space?\nConsider the following simple example:\n\nIf \\(X\\) is a circle and \\(T\\) is rotation by \\(90^\\circ\\), then orbits are perfectly periodic. After four steps, we are back at where we started.\n\nIf the angle is irrational, then the orbit never lands exactly where it started. But it does keep wandering around the circle in such a way that eventually it perhaps comes arbitrarily close to the starting point.\n\nSo a nice thing to wonder would be if coming back close to where we started is a general phenomenon or not.\nTo even begin answering this, we need some extra structure. Just having a set \\(X\\) and a map \\(T\\) is too vague. What we want is a way to say something like: “most points behave this way.” And the right tool for that is measure theory.\nIf we give our space a measure (so we can talk about sizes of sets, probabilities, and so on), and if our transformation \\(T\\) respects that measure, we might be able to answer our question. And hence we consider the setting of a measure-preserving system.\nAnd in this setting we have a deep and beautiful result: the Poincaré Recurrence Theorem, which tells us something quite striking about orbits. But before we get there, let’s first understand what measure-preserving systems actually are.",
+    "crumbs": [
+      "Home",
+      "Posts",
+      "Poincaré Recurrence"
+    ]
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "\nAbout\n",
@@ -15,6 +27,6 @@
     "href": "index.html",
     "title": "Mostly Mathematics",
     "section": "",
-    "text": "Mostly Mathematics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhy period three implies chaos and a dive into the phenomenal paper by Li and Yorke\n\n\n\nTopology\n\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nSecond Post\n\n\n\nTopology\n\nAnalysis\n\n\n\n\n\n\n\n\n\nSep 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Post\n\n\n\nAnalysis\n\nAlgebra\n\nComplex Analysis\n\n\n\n\n\n\n\n\n\nSep 5, 2025\n\n\n\n\n\nNo matching items"
+    "text": "Mostly Mathematics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhy period three implies chaos and a dive into the phenomenal paper by Li and Yorke\n\n\n\nTopology\n\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nSecond Post\n\n\n\nTopology\n\nAnalysis\n\n\n\n\n\n\n\n\n\nSep 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nPoincaré Recurrence\n\n\n\nAnalysis\n\nDynamics\n\n\n\n\n\n\n\n\n\nSep 5, 2025\n\n\n\n\n\nNo matching items"
   }
 ]

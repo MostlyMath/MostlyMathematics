@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-09-05">
 
-<title>First Post – Mostly Mathematics</title>
+<title>Poincaré Recurrence – Mostly Mathematics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -70,6 +90,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -112,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">First Post</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">Poincaré Recurrence</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -121,12 +170,11 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">First Post</a></li></ol></nav>
-      <h1 class="title">First Post</h1>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">Poincaré Recurrence</a></li></ol></nav>
+      <h1 class="title">Poincaré Recurrence</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Analysis</div>
-                <div class="quarto-category">Algebra</div>
-                <div class="quarto-category">Complex Analysis</div>
+                <div class="quarto-category">Dynamics</div>
               </div>
                   </div>
   </div>
@@ -173,7 +221,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/my-first-post/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">First Post</span></a>
+ <span class="menu-text">Poincaré Recurrence</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -203,10 +251,73 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>When we talk of dynamical systems, the basic idea is that we pick a space <span class="math inline">\(X\)</span>, choose a rule <span class="math inline">\(T: X \to X\)</span>, and then we keep applying that rule over and over again to a point <span class="math inline">\(x \in X\)</span>.</p>
+<p>So if we start with <span class="math inline">\(x\)</span>, then apply <span class="math inline">\(T\)</span>, we obtain <span class="math inline">\(T(x)\)</span>. Applying it again, we obtain <span class="math inline">\(T^2(x)\)</span>, then <span class="math inline">\(T^3(x)\)</span>, and so on. The sequence</p>
+<p><span class="math display">\[
+x, \; T(x), \; T^2(x), \; T^3(x), \dots
+\]</span></p>
+<p>is called the <strong>orbit</strong> of <span class="math inline">\(x\)</span> under <span class="math inline">\(T\)</span> which is the most natural object to study since the orbit tells us the future path of the point.</p>
+<p>Now a good question to ask would be: <strong>What happens to these orbits in the longer run?</strong> One can wonder if they keep running away to new territories forever? Or if they loop back and revisit old places? Or if they somehow spread out evenly across space?</p>
+<p>Consider the following simple example:</p>
+<ul>
+<li>If <span class="math inline">\(X\)</span> is a circle and <span class="math inline">\(T\)</span> is rotation by <span class="math inline">\(90^\circ\)</span>, then orbits are perfectly periodic. After four steps, we are back at where we started.<br>
+</li>
+<li>If the angle is irrational, then the orbit never lands exactly where it started. But it does keep wandering around the circle in such a way that eventually it perhaps comes arbitrarily close to the starting point.</li>
+</ul>
+<p>So a nice thing to wonder would be if <strong>coming back close to where we started</strong> is a general phenomenon or not.</p>
+<p>To even begin answering this, we need some extra structure. Just having a set <span class="math inline">\(X\)</span> and a map <span class="math inline">\(T\)</span> is too vague. What we want is a way to say something like: “most points behave this way.” And the right tool for that is <strong>measure theory</strong>.</p>
+<p>If we give our space a measure (so we can talk about sizes of sets, probabilities, and so on), and if our transformation <span class="math inline">\(T\)</span> respects that measure, we might be able to answer our question. And hence we consider the setting of a <strong>measure-preserving system</strong>.</p>
+<p>And in this setting we have a deep and beautiful result: the <strong>Poincaré Recurrence Theorem</strong>, which tells us something quite striking about orbits. But before we get there, let’s first understand what measure-preserving systems actually are.</p>
+</section>
+<section id="measure-preserving-systems" class="level3">
+<h3 class="anchored" data-anchor-id="measure-preserving-systems">Measure Preserving Systems</h3>
+<blockquote class="blockquote">
+<p>Let <span class="math inline">\((X, \beta, \mu)\)</span> be a measure space. A transformation <span class="math inline">\(T: X \to X\)</span> is <strong>measure-preserving</strong> if <span class="math inline">\(T\)</span> is measurable and if <span class="math inline">\(\mu(T^{-1}(B)) = \mu(B)\)</span> for all <span class="math inline">\(B \in \beta.\)</span></p>
+</blockquote>
+<p>A measure-preserving transformation just rearranges the space without changing sizes of sets (like shuffling cards for instance: positions change, but nothing is lost or gained). We use <span class="math inline">\(T^{-1}\)</span> in the definition because preimages are always measurable (images need not be), and they correctly account for all points mapping into a set, even if <span class="math inline">\(T\)</span> is not one-to-one (for instance the doubling map on a circle). Check that rotating the circle just shifts arcs around without changing their length, so the Lebesgue measure is preserved making it a measure preserving transformation.</p>
+</section>
+<section id="poincarés-recurrence-theorem" class="level3">
+<h3 class="anchored" data-anchor-id="poincarés-recurrence-theorem">Poincaré’s Recurrence Theorem</h3>
+<p>Now we can finally answer our question. A notable property of measure-preserving dynamical systems is the phenomenon of recurrence: the tendency of orbits to return arbitrarily close to their initial positions. The Poincaré Recurrence Theorem, foundational to ergodic theory, formalizes this property.</p>
+<blockquote class="blockquote">
+<p>Let <span class="math inline">\(T : X \to X\)</span> be a measure-preserving transformation of a probability space <span class="math inline">\((X, \mathcal{B}, m)\)</span>. Let <span class="math inline">\(E \in \mathcal{B}\)</span> with <span class="math inline">\(m(E) &gt; 0\)</span>. Then almost all points of <span class="math inline">\(E\)</span> return infinitely often to <span class="math inline">\(E\)</span> under positive iteration by <span class="math inline">\(T\)</span> (i.e., there exists <span class="math inline">\(F \subseteq E\)</span> with <span class="math inline">\(m(F) = m(E)\)</span> such that for each <span class="math inline">\(x \in F\)</span> there is a sequence <span class="math inline">\(n_1 &lt; n_2 &lt; n_3 &lt; \cdots\)</span> of natural numbers with <span class="math inline">\(T^{n_i}(x) \in F\)</span> for each <span class="math inline">\(i\)</span>).</p>
+</blockquote>
+<p>The proof to this theorem is extremely simple and uses foundational measure theory. Here is a sketch.</p>
+<p>Suppose we have a set <span class="math inline">\(E\)</span> with <span class="math inline">\((m(E) &gt; 0)\)</span>. Imagine, for contradiction, that there is some subset <span class="math inline">\(A \subseteq E\)</span> (with positive measure) whose points never come back to <span class="math inline">\(E\)</span> once they leave.</p>
+<p>Now look at the sets: <span class="math inline">\(A, T(A), T^2(A), T^3(A), \dots\)</span> These sets can’t overlap, because if they did, some point of <span class="math inline">\(A\)</span> would eventually land back in <span class="math inline">\(E\)</span>, which we assumed never happens.</p>
+<p>But here’s the catch: since <span class="math inline">\(T\)</span> preserves measure, all these sets have the same positive measure as <span class="math inline">\(A\)</span>. So we’ve built infinitely many disjoint sets, each of positive measure, sitting inside a probability space of total measure <span class="math inline">\(1\)</span>. That’s impossible.</p>
+<p>Therefore, our assumption must be wrong. Almost every point in <span class="math inline">\(E\)</span> <strong>must return to <span class="math inline">\(E\)</span> infinitely often</strong>.</p>
+<p>Please check the references for a rigorous proof.</p>
+<p>Note that the theorem crucially needs two assumptions:</p>
+<blockquote class="blockquote">
+<ul>
+<li>If the system is <strong>not measure-preserving</strong>, then the measure can diminish, and recurrence may fail (points might eventually disappear into a set of measure zero).<br>
+</li>
+<li>If the space does <strong>not have finite measure</strong> (for example, infinite measure spaces like <span class="math inline">\(\mathbb{R}\)</span> with Lebesgue measure), then points may never return since finiteness of the measures takes up a key role in the proof.</li>
+</ul>
+</blockquote>
+<p>So we obtain recurrence exactly by combining <strong>finite measures</strong> with <strong>measure preservation</strong>.</p>
+</section>
+<section id="references" class="level2">
 
 
 
-</main> <!-- /main -->
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-petersen1983" class="csl-entry" role="listitem">
+Petersen, Karl E. 1983. <em>Ergodic Theory</em>. Vol. 2. Cambridge Studies in Advanced Mathematics. Cambridge: Cambridge University Press. <a href="https://doi.org/10.1017/CBO9780511608728">https://doi.org/10.1017/CBO9780511608728</a>.
+</div>
+<div id="ref-silva2008" class="csl-entry" role="listitem">
+Silva, César E. 2008. <em>Invitation to Ergodic Theory</em>. Vol. 42. Student Mathematical Library. Providence, RI: American Mathematical Society.
+</div>
+<div id="ref-walters1982" class="csl-entry" role="listitem">
+Walters, Peter. 1982. <em>An Introduction to Ergodic Theory</em>. Vol. 79. Graduate Texts in Mathematics. New York: Springer-Verlag.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
