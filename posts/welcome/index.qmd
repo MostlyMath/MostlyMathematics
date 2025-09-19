@@ -1,7 +1,7 @@
 ---
-title: "Why period three implies chaos and a  dive into the phenomenal paper by Li and Yorke"
-date: "2025-09-10"
-categories: [Topology]
+title: "Reproducing Kernel Hilbert Spaces - An Overview"
+date: "2025-09-18"
+categories: [Analysis]
 ---
 
 

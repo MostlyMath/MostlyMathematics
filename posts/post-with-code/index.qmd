@@ -1,6 +1,6 @@
 ---
-title: "Second Post"
-date: "2025-09-07"
-categories: [Topology, Analysis]
+title: "The Birkhoff's Ergodic Theorem"
+date: "2025-09-11"
+categories: [Dynamics, Analysis]
 ---
 
