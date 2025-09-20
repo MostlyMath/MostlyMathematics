@@ -47,7 +47,7 @@ $\widetilde{k}(x, y) = \langle \widetilde{k}(\cdot, y), k(\cdot, x) \rangle = \l
 
 Also note that $\|k(\cdot, x)\| = \sqrt{k(x, x)}$ since $\|k(\cdot, x)\|^2 = \langle k(\cdot, x), k(\cdot, x) \rangle = k(x, x)$.
 
-At this point we might wonder why we care about this reproducing property and what does it have to do with evaluation at a point. The key is that evaluation should be a nice operation. Like we noted before, in some Hilbert spaces of functions (like ${\mathcal{L}}^2$), evaluation doesn’t even make sense as two different-looking functions might represent the same element of the space making $f(x)$ ambiguous.
+At this point we might wonder why we care about this reproducing property and what it has to do with evaluation at a point. The key is that evaluation should be a nice operation. Like we noted before, in some Hilbert spaces of functions (like ${\mathcal{L}}^2$), evaluation doesn’t even make sense as two different-looking functions might represent the same element of the space making $f(x)$ ambiguous.
 
 To avoid this, we require that the evaluation map $e_x(f) = f(x)$ to be a continuous linear functional for every point $x$. Once this condition holds, the Riesz representation theorem guarantees the existence of the kernel elements $k_x$ and the reproducing property follows naturally. In fact, the continuity of evaluation functions characterizes RKHS.
 
