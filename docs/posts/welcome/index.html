@@ -286,14 +286,18 @@ k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
 1. <span class="math inline">\(k(x,x) \geq 0\)</span>.<br>
 2. <span class="math inline">\(\lvert k(x,y) \rvert^2 \leq k(x,x) k(y,y)\)</span>.</p>
 </blockquote>
-<p>For (1), it is obvious from the definition (take <span class="math inline">\(n=1, c_1 = 1, x_1 = x\)</span>). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!), the determinant must be non-negative which gives us this inequality.</p>
+<blockquote class="blockquote">
+<p>Proof: For (1), it is obvious from the definition (take <span class="math inline">\(n=1, c_1 = 1, x_1 = x\)</span>). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!), the determinant must be non-negative which gives us this inequality.</p>
+</blockquote>
 <blockquote class="blockquote">
 <p><strong>Proposition 2:</strong> If <span class="math inline">\(k_i : \mathcal{X} \times \mathcal{X} \to \mathbb{C} \ (i=1,2,\ldots)\)</span> are positive definite kernels, then the following are also positive definite kernels.<br>
 1. <span class="math inline">\(ak_1 + bk_2 \quad (a,b \geq 0)\)</span> (positive combination)<br>
 2. <span class="math inline">\(k_1 k_2\)</span> (product)<br>
 3. <span class="math inline">\(\lim_{i \to \infty} k_i(x,y),\)</span> assuming the limit exists.</p>
 </blockquote>
-<p>For (1) and (3), it is easy to see and for (2), it is enough to show that if two Hermitian matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are positive semidefinite, so is their component wise product (the Hadamard product). This can be done by taking the eigendecomposition of <span class="math inline">\(A\)</span> and then checking for the positve definiteness of the Hadamard product.</p>
+<blockquote class="blockquote">
+<p>Proof: For (1) and (3), it is easy to see and for (2), it is enough to show that if two Hermitian matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are positive semidefinite, so is their component wise product (the Hadamard product). This can be done by taking the eigendecomposition of <span class="math inline">\(A\)</span> and then checking for the positve semidefiniteness of the Hadamard product.</p>
+</blockquote>
 <blockquote class="blockquote">
 <p><strong>Proposition 3:</strong> Let <span class="math inline">\(V\)</span> be a vector space with an inner product <span class="math inline">\(\langle \cdot , \cdot \rangle\)</span>. If we have a map <span class="math inline">\(\Phi : \mathcal{X} \to V; x \mapsto \Phi(x)\)</span>, a positive definite kernel on <span class="math inline">\(\mathcal{X}\)</span> is defined by <span class="math display">\[k(x,y) = \langle \Phi(x), \Phi(y) \rangle.\]</span></p>
 </blockquote>

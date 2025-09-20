@@ -44,14 +44,14 @@ Before looking into some examples of positive definite kernels, we will look int
   > 1. $k(x,x) \geq 0$.  
   > 2. $\lvert k(x,y) \rvert^2 \leq k(x,x) k(y,y)$.
 
-For (1), it is obvious from the definition (take $n=1, c_1 = 1, x_1 = x$). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!), the determinant must be non-negative which gives us this inequality.
+> Proof: For (1), it is obvious from the definition (take $n=1, c_1 = 1, x_1 = x$). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!), the determinant must be non-negative which gives us this inequality.
 
 > **Proposition 2:** If $k_i : \mathcal{X} \times \mathcal{X} \to \mathbb{C} \ (i=1,2,\ldots)$ are positive definite kernels, then the following are also positive definite kernels.   
   > 1. $ak_1 + bk_2 \quad (a,b \geq 0)$ (positive combination)  
   > 2. $k_1 k_2$ (product)  
   > 3. $\lim_{i \to \infty} k_i(x,y),$ assuming the limit exists.  
 
-For (1) and (3), it is easy to see and for (2), it is enough to show that if two Hermitian matrices $A$ and $B$ are positive semidefinite, so is their component wise product (the Hadamard product). This can be done by taking the eigendecomposition of $A$ and then checking for the positve definiteness of the Hadamard product.
+> Proof: For (1) and (3), it is easy to see and for (2), it is enough to show that if two Hermitian matrices $A$ and $B$ are positive semidefinite, so is their component wise product (the Hadamard product). This can be done by taking the eigendecomposition of $A$ and then checking for the positve semidefiniteness of the Hadamard product.
 
 > **Proposition 3:** Let $V$ be a vector space with an inner product $\langle \cdot , \cdot \rangle$. If we have a map $\Phi : \mathcal{X} \to V; x \mapsto \Phi(x)$, a positive definite kernel on $\mathcal{X}$ is defined by $$k(x,y) = \langle \Phi(x), \Phi(y) \rangle.$$
 
