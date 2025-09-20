@@ -2,6 +2,11 @@
 title: "Understanding Positive Definite Kernels"
 date: "2025-09-18"
 categories: [Analysis]
+bibliography: ../../references.bib
+nocite: |
+  @fukumizu2008kernel
+  @berlinet2004reproducing
+  @aronszajn1950theory
 ---
 
 ### Introduction
@@ -25,7 +30,7 @@ k(x_n, x_1) & \cdots & k(x_n, x_n)
 \end{pmatrix}$
 is positive semidefinite.
 
-Note that the symmetric matrix $(k(x_i, x_j))_{i,j=1}^{n}$ is often called a **Gram matrix**.
+So basically, positive definite kernels are those functions whose weighted combinations over any finite set of points are always non-negative. Note that the symmetric matrix $(k(x_i, x_j))_{i,j=1}^{n}$ is often called a **Gram matrix**.
 
 In the complex-valued case, the Hermitian property $k(y,x) = \overline{k(x,y)}$ is derived from the positive-definiteness itself.
 
@@ -39,28 +44,57 @@ Before looking into some examples of positive definite kernels, we will look int
   > 1. $k(x,x) \geq 0$.  
   > 2. $\lvert k(x,y) \rvert^2 \leq k(x,x) k(y,y)$.
 
-The first statement is obvious from the definition (take $n=1, c_1 = 1, x_1 = x$). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!) and hence the determinant must be non-negative which gives us this inequality.
+For (1), it is obvious from the definition (take $n=1, c_1 = 1, x_1 = x$). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!), the determinant must be non-negative which gives us this inequality.
 
 > **Proposition 2:** If $k_i : \mathcal{X} \times \mathcal{X} \to \mathbb{C} \ (i=1,2,\ldots)$ are positive definite kernels, then the following are also positive definite kernels.   
   > 1. $ak_1 + bk_2 \quad (a,b \geq 0)$ (positive combination)  
   > 2. $k_1 k_2$ (product)  
   > 3. $\lim_{i \to \infty} k_i(x,y),$ assuming the limit exists.  
 
-
+For (1) and (3), it is easy to see and for (2), it is enough to show that if two Hermitian matrices $A$ and $B$ are positive semidefinite, so is their component wise product (the Hadamard product). This can be done by taking the eigendecomposition of $A$ and then checking for the positve definiteness of the Hadamard product.
 
 > **Proposition 3:** Let $V$ be a vector space with an inner product $\langle \cdot , \cdot \rangle$. If we have a map $\Phi : \mathcal{X} \to V; x \mapsto \Phi(x)$, a positive definite kernel on $\mathcal{X}$ is defined by $$k(x,y) = \langle \Phi(x), \Phi(y) \rangle.$$
 
+> Proof: Let $x_1, \ldots, x_n$ in $\mathcal{X}$ and $c_1, \ldots, c_n \in \mathbb{C}$.
+> $$
+\begin{align*}
+\sum_{i,j=1}^n c_i \overline{c_j} k(x_i, x_j)
+&= \sum_{i,j=1}^n c_i \overline{c_j} \langle \Phi(x_i), \Phi(x_j) \rangle \\
+&= \left\langle \sum_{i=1}^n c_i \Phi(x_i), \sum_{j=1}^n c_j \Phi(x_j) \right\rangle \\
+&= \left\| \sum_{i=1}^n c_i \Phi(x_i) \right\|^2 \geq 0.
+\end{align*}
+$$
+
+
 > **Proposition 4:** Let $k : \mathcal{X} \times \mathcal{X} \to \mathbb{C}$ be a positive definite kernel and $f : \mathcal{X} \to \mathbb{C}$ be an arbitrary function. Then, $\tilde{k}(x,y) = f(x) \, k(x,y) \, \overline{f(y)}$ is positive definite. In particular, $f(x)\overline{f(y)}$ is a positive definite kernel.
+
+>Proof: Consider any $n \in \mathbb{N}$, any $(x_1, \ldots, x_n \in \mathcal{X}$, and any $c_1, \ldots, c_n \in \mathbb{C}$ 
+$$
+\sum_{i,j=1}^n c_i \overline{c_j} \tilde{k}(x_i, x_j)
+= \sum_{i,j=1}^n c_i \overline{c_j} f(x_i) k(x_i, x_j) \overline{f(x_j)}  
+> $$ Let $d_i = c_i f(x_i)$. Then since $k$ is positive definite we have
+> $$
+\sum_{i,j=1}^n d_i \overline{d_j} k(x_i, x_j) \geq 0
+$$
 
 ### Examples
 
 - Linear Kernel: $$k_0(x,y) = x^{T}y$$ 
+This directly follows from Proposition 3
 - Exponential Kernel: $$k_E(x,y) = exp(\beta x^{T}y) \quad \text{where} \quad \beta > 0$$  
+This follows from the previous example and applying Proposition 2 after taking:
+$$
+\exp(\beta x^T y) = 1 + \beta x^T y + \frac{\beta^2}{2!}(x^T y)^2 + \frac{\beta^3}{3!}(x^T y)^3 + \cdots
+$$
+
 - Gaussian Radial Basis Function Kernel:  $$
 k_G(x,y) = \exp\!\left(-\frac{1}{2\sigma^2}\|x-y\|^2\right) \quad \text{where} \quad (\sigma > 0)$$
+This follows from Proposition 4 after taking:
+$$
+\exp\left(-\frac{1}{2\sigma^2} \|x - y\|^2 \right) = \exp\left(-\frac{\|x\|^2}{2\sigma^2}\right) \exp\left(\frac{x^T y}{\sigma^2}\right) \exp\left(-\frac{\|y\|^2}{2\sigma^2}\right)
+$$
 
+On a concluding note, we saw the definition of a positive definite kernel and the ways to construct more such kernels which helped us find some examples for the same. Our goal is to understand how positive definite kernels behave like inner products once you embed points into the appropriate Hilbert space. We will look into in the next post.
 
-
-
-
+### References
 

@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -255,7 +275,7 @@ k(x_1, x_1) &amp; \cdots &amp; k(x_1, x_n) \\
 k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
 \end{pmatrix}\)</span> is positive semidefinite.</p>
 </blockquote>
-<p>Note that the symmetric matrix <span class="math inline">\((k(x_i, x_j))_{i,j=1}^{n}\)</span> is often called a <strong>Gram matrix</strong>.</p>
+<p>So basically, positive definite kernels are those functions whose weighted combinations over any finite set of points are always non-negative. Note that the symmetric matrix <span class="math inline">\((k(x_i, x_j))_{i,j=1}^{n}\)</span> is often called a <strong>Gram matrix</strong>.</p>
 <p>In the complex-valued case, the Hermitian property <span class="math inline">\(k(y,x) = \overline{k(x,y)}\)</span> is derived from the positive-definiteness itself.</p>
 <blockquote class="blockquote">
 <p>Let <span class="math inline">\(\mathcal{X}\)</span> be a set. <span class="math inline">\(k : \mathcal{X} \times \mathcal{X} \to \mathbb{C}\)</span> is a <strong>positive definite kernel</strong> if for every <span class="math inline">\(x_1, \dots, x_n \in \mathcal{X}\)</span> and <span class="math inline">\(c_1, \dots, c_n \in \mathbb{C}\)</span>, we have that <span class="math display">\[\sum_{i,j=1}^{n} c_i \overline{c_j} k(x_i, x_j) \ge 0.\]</span></p>
@@ -266,34 +286,72 @@ k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
 1. <span class="math inline">\(k(x,x) \geq 0\)</span>.<br>
 2. <span class="math inline">\(\lvert k(x,y) \rvert^2 \leq k(x,x) k(y,y)\)</span>.</p>
 </blockquote>
-<p>The first statement is obvious from the definition (take <span class="math inline">\(n=1, c_1 = 1, x_1 = x\)</span>). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!) and hence the determinant must be non-negative which gives us this inequality.</p>
+<p>For (1), it is obvious from the definition (take <span class="math inline">\(n=1, c_1 = 1, x_1 = x\)</span>). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!), the determinant must be non-negative which gives us this inequality.</p>
 <blockquote class="blockquote">
 <p><strong>Proposition 2:</strong> If <span class="math inline">\(k_i : \mathcal{X} \times \mathcal{X} \to \mathbb{C} \ (i=1,2,\ldots)\)</span> are positive definite kernels, then the following are also positive definite kernels.<br>
 1. <span class="math inline">\(ak_1 + bk_2 \quad (a,b \geq 0)\)</span> (positive combination)<br>
 2. <span class="math inline">\(k_1 k_2\)</span> (product)<br>
 3. <span class="math inline">\(\lim_{i \to \infty} k_i(x,y),\)</span> assuming the limit exists.</p>
 </blockquote>
+<p>For (1) and (3), it is easy to see and for (2), it is enough to show that if two Hermitian matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are positive semidefinite, so is their component wise product (the Hadamard product). This can be done by taking the eigendecomposition of <span class="math inline">\(A\)</span> and then checking for the positve definiteness of the Hadamard product.</p>
 <blockquote class="blockquote">
 <p><strong>Proposition 3:</strong> Let <span class="math inline">\(V\)</span> be a vector space with an inner product <span class="math inline">\(\langle \cdot , \cdot \rangle\)</span>. If we have a map <span class="math inline">\(\Phi : \mathcal{X} \to V; x \mapsto \Phi(x)\)</span>, a positive definite kernel on <span class="math inline">\(\mathcal{X}\)</span> is defined by <span class="math display">\[k(x,y) = \langle \Phi(x), \Phi(y) \rangle.\]</span></p>
 </blockquote>
 <blockquote class="blockquote">
+<p>Proof: Let <span class="math inline">\(x_1, \ldots, x_n\)</span> in <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(c_1, \ldots, c_n \in \mathbb{C}\)</span>. <span class="math display">\[
+\begin{align*}
+\sum_{i,j=1}^n c_i \overline{c_j} k(x_i, x_j)
+&amp;= \sum_{i,j=1}^n c_i \overline{c_j} \langle \Phi(x_i), \Phi(x_j) \rangle \\
+&amp;= \left\langle \sum_{i=1}^n c_i \Phi(x_i), \sum_{j=1}^n c_j \Phi(x_j) \right\rangle \\
+&amp;= \left\| \sum_{i=1}^n c_i \Phi(x_i) \right\|^2 \geq 0.
+\end{align*}
+\]</span></p>
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Proposition 4:</strong> Let <span class="math inline">\(k : \mathcal{X} \times \mathcal{X} \to \mathbb{C}\)</span> be a positive definite kernel and <span class="math inline">\(f : \mathcal{X} \to \mathbb{C}\)</span> be an arbitrary function. Then, <span class="math inline">\(\tilde{k}(x,y) = f(x) \, k(x,y) \, \overline{f(y)}\)</span> is positive definite. In particular, <span class="math inline">\(f(x)\overline{f(y)}\)</span> is a positive definite kernel.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Proof: Consider any <span class="math inline">\(n \in \mathbb{N}\)</span>, any <span class="math inline">\((x_1, \ldots, x_n \in \mathcal{X}\)</span>, and any <span class="math inline">\(c_1, \ldots, c_n \in \mathbb{C}\)</span> <span class="math display">\[
+\sum_{i,j=1}^n c_i \overline{c_j} \tilde{k}(x_i, x_j)
+= \sum_{i,j=1}^n c_i \overline{c_j} f(x_i) k(x_i, x_j) \overline{f(x_j)}  
+\]</span> Let <span class="math inline">\(d_i = c_i f(x_i)\)</span>. Then since <span class="math inline">\(k\)</span> is positive definite we have <span class="math display">\[
+\sum_{i,j=1}^n d_i \overline{d_j} k(x_i, x_j) \geq 0
+\]</span></p>
 </blockquote>
 </section>
 <section id="examples" class="level3">
 <h3 class="anchored" data-anchor-id="examples">Examples</h3>
 <ul>
-<li>Linear Kernel: <span class="math display">\[k_0(x,y) = x^{T}y\]</span></li>
-<li>Exponential Kernel: <span class="math display">\[k_E(x,y) = exp(\beta x^{T}y) \quad \text{where} \quad \beta &gt; 0\]</span><br>
-</li>
-<li>Gaussian Radial Basis Function Kernel: <span class="math display">\[
-k_G(x,y) = \exp\!\left(-\frac{1}{2\sigma^2}\|x-y\|^2\right) \quad \text{where} \quad (\sigma &gt; 0)\]</span></li>
+<li><p>Linear Kernel: <span class="math display">\[k_0(x,y) = x^{T}y\]</span> This directly follows from Proposition 3</p></li>
+<li><p>Exponential Kernel: <span class="math display">\[k_E(x,y) = exp(\beta x^{T}y) \quad \text{where} \quad \beta &gt; 0\]</span><br>
+This follows from the previous example and applying Proposition 2 after taking: <span class="math display">\[
+\exp(\beta x^T y) = 1 + \beta x^T y + \frac{\beta^2}{2!}(x^T y)^2 + \frac{\beta^3}{3!}(x^T y)^3 + \cdots
+\]</span></p></li>
+<li><p>Gaussian Radial Basis Function Kernel: <span class="math display">\[
+k_G(x,y) = \exp\!\left(-\frac{1}{2\sigma^2}\|x-y\|^2\right) \quad \text{where} \quad (\sigma &gt; 0)\]</span> This follows from Proposition 4 after taking: <span class="math display">\[
+\exp\left(-\frac{1}{2\sigma^2} \|x - y\|^2 \right) = \exp\left(-\frac{\|x\|^2}{2\sigma^2}\right) \exp\left(\frac{x^T y}{\sigma^2}\right) \exp\left(-\frac{\|y\|^2}{2\sigma^2}\right)
+\]</span></p></li>
 </ul>
+<p>On a concluding note, we saw the definition of a positive definite kernel and the ways to construct more such kernels which helped us find some examples for the same. Our goal is to understand how positive definite kernels behave like inner products once you embed points into the appropriate Hilbert space. We will look into in the next post.</p>
+</section>
+<section id="references" class="level3">
+
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-aronszajn1950theory" class="csl-entry" role="listitem">
+Aronszajn, Nachman. 1950. <span>“Theory of Reproducing Kernels.”</span> <em>Transactions of the American Mathematical Society</em> 68 (3): 337–404. <a href="https://doi.org/10.1090/S0002-9947-1950-0037978-4">https://doi.org/10.1090/S0002-9947-1950-0037978-4</a>.
+</div>
+<div id="ref-berlinet2004reproducing" class="csl-entry" role="listitem">
+Berlinet, Alain, and Christine Thomas-Agnan. 2004. <em>Reproducing Kernel Hilbert Spaces in Probability and Statistics</em>. Springer Science &amp; Business Media.
+</div>
+<div id="ref-fukumizu2008kernel" class="csl-entry" role="listitem">
+Fukumizu, Kenji. 2008. <span>“Elements of Positive Definite Kernel and Reproducing Kernel Hilbert Space: Statistical Inference with Reproducing Kernel Hilbert Space.”</span> Institute of Statistical Mathematics, ROIS; Department of Statistical Science, Graduate University for Advanced Studies; <a href="https://www.ism.ac.jp/~fukumizu/H20_kernel/Kernel_2_elements.pdf" class="uri">https://www.ism.ac.jp/~fukumizu/H20_kernel/Kernel_2_elements.pdf</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
