@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-18">
+<meta name="dcterms.date" content="2025-09-15">
 
-<title>Understanding Positive Definite Kernels – Mostly Mathematics</title>
+<title>Positive Definite Kernels – Mostly Mathematics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -161,7 +161,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/welcome/index.html">Understanding Positive Definite Kernels</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/welcome/index.html">Positive Definite Kernels</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -170,8 +170,8 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/welcome/index.html">Understanding Positive Definite Kernels</a></li></ol></nav>
-      <h1 class="title">Understanding Positive Definite Kernels</h1>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/welcome/index.html">Positive Definite Kernels</a></li></ol></nav>
+      <h1 class="title">Positive Definite Kernels</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Analysis</div>
               </div>
@@ -185,7 +185,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 18, 2025</p>
+        <p class="date">September 15, 2025</p>
       </div>
     </div>
     
@@ -238,7 +238,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/welcome/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Understanding Positive Definite Kernels</span></a>
+ <span class="menu-text">Positive Definite Kernels</span></a>
   </div>
 </li>
       </ul>
@@ -258,8 +258,8 @@ window.Quarto = {
 
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>In functional analysis and related areas, we often encounter functions that speak of the relationships between points in a space (a metric or a distance function for instance). A kernel is such a function, taking two inputs and returning a real or a complex number, which can be interpreted as a measure of similarity or interaction.</p>
-<p>Amongst these kernels, a special class called positive definite kernels play a central role as they are characterized by an intrinsic property that guarantees the existence of an associated Hilbert space of functions (a reproducing kernel Hilbert space, which we shall look into in another post).</p>
+<p>This post is Part I of the series on reproducing kernel Hilbert spaces (RKHS). In functional analysis and related areas, we often encounter functions that speak of the relationships between points in a space (a metric or a distance function for instance). A kernel is such a function, taking two inputs and returning a real or a complex number, which can be interpreted as a measure of similarity or interaction.</p>
+<p>Amongst these kernels, a special class called positive definite kernels play a central role as they are characterized by an intrinsic property that guarantees the existence of an associated Hilbert space of functions (a reproducing kernel Hilbert space which we will look into to in the next post.</p>
 <p>Positive definite kernels are not just abstract objects, they also provide the foundation for constructing function spaces, understanding linear operators, and formulating problems in approximation theory and analysis. In this post, we will define positive definite kernels, explore some properties, and look into some examples.</p>
 </section>
 <section id="positive-definite-kernels" class="level3">
@@ -289,6 +289,8 @@ k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
 <blockquote class="blockquote">
 <p>Proof: For (1), it is obvious from the definition (take <span class="math inline">\(n=1, c_1 = 1, x_1 = x\)</span>). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!), the determinant must be non-negative which gives us this inequality.</p>
 </blockquote>
+<p>From Proposition 1 we get the first hints of structure hidden in positive definite kernels. The non-negativity of <span class="math inline">\(k(x,x)\)</span> and the Cauchy-Schwarz-type inequality suggest that these kernels behave a lot like inner products even if we haven’t formally embedded the points in a Hilbert space yet.</p>
+<p>One nice property of positive definite kernels is that adding kernels, multiplying them, or taking limits produces new positive definite kernels. This lets us construct more complex kernels from simple ones.</p>
 <blockquote class="blockquote">
 <p><strong>Proposition 2:</strong> If <span class="math inline">\(k_i : \mathcal{X} \times \mathcal{X} \to \mathbb{C} \ (i=1,2,\ldots)\)</span> are positive definite kernels, then the following are also positive definite kernels.<br>
 1. <span class="math inline">\(ak_1 + bk_2 \quad (a,b \geq 0)\)</span> (positive combination)<br>
@@ -298,6 +300,7 @@ k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
 <blockquote class="blockquote">
 <p>Proof: For (1) and (3), it is easy to see and for (2), it is enough to show that if two Hermitian matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are positive semidefinite, so is their component wise product (the Hadamard product). This can be done by taking the eigendecomposition of <span class="math inline">\(A\)</span> and then checking for the positve semidefiniteness of the Hadamard product.</p>
 </blockquote>
+<p>So far we looked at kernels abstractly. Proposition 3 shows how positive definite kernels naturally arise from inner products in some vector space. This is the first step towards seeing kernels encoding hidden geometries.</p>
 <blockquote class="blockquote">
 <p><strong>Proposition 3:</strong> Let <span class="math inline">\(V\)</span> be a vector space with an inner product <span class="math inline">\(\langle \cdot , \cdot \rangle\)</span>. If we have a map <span class="math inline">\(\Phi : \mathcal{X} \to V; x \mapsto \Phi(x)\)</span>, a positive definite kernel on <span class="math inline">\(\mathcal{X}\)</span> is defined by <span class="math display">\[k(x,y) = \langle \Phi(x), \Phi(y) \rangle.\]</span></p>
 </blockquote>
@@ -311,6 +314,7 @@ k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
 \end{align*}
 \]</span></p>
 </blockquote>
+<p>Proposition 4 shows how kernels can be “reweighted” by arbitrary functions to produce new kernels.</p>
 <blockquote class="blockquote">
 <p><strong>Proposition 4:</strong> Let <span class="math inline">\(k : \mathcal{X} \times \mathcal{X} \to \mathbb{C}\)</span> be a positive definite kernel and <span class="math inline">\(f : \mathcal{X} \to \mathbb{C}\)</span> be an arbitrary function. Then, <span class="math inline">\(\tilde{k}(x,y) = f(x) \, k(x,y) \, \overline{f(y)}\)</span> is positive definite. In particular, <span class="math inline">\(f(x)\overline{f(y)}\)</span> is a positive definite kernel.</p>
 </blockquote>
@@ -322,6 +326,7 @@ k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
 \sum_{i,j=1}^n d_i \overline{d_j} k(x_i, x_j) \geq 0
 \]</span></p>
 </blockquote>
+<p>Now that we know how to construct positive definite kernels, let us see some concrete examples.</p>
 </section>
 <section id="examples" class="level3">
 <h3 class="anchored" data-anchor-id="examples">Examples</h3>
@@ -336,7 +341,7 @@ k_G(x,y) = \exp\!\left(-\frac{1}{2\sigma^2}\|x-y\|^2\right) \quad \text{where} \
 \exp\left(-\frac{1}{2\sigma^2} \|x - y\|^2 \right) = \exp\left(-\frac{\|x\|^2}{2\sigma^2}\right) \exp\left(\frac{x^T y}{\sigma^2}\right) \exp\left(-\frac{\|y\|^2}{2\sigma^2}\right)
 \]</span></p></li>
 </ul>
-<p>On a concluding note, we saw the definition of a positive definite kernel and the ways to construct more such kernels which helped us find some examples for the same. Our goal is to understand how positive definite kernels behave like inner products once you embed points into the appropriate Hilbert space. We will look into in the next post.</p>
+<p>On a concluding note, we saw the definition of a positive definite kernel and the ways to construct more such kernels which led to some examples. Our goal is to understand how positive definite kernels behave like inner products once you embed points into the appropriate Hilbert space which we will look into in the next post.</p>
 </section>
 <section id="references" class="level3">
 
