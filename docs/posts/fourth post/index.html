@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-18">
+<meta name="dcterms.date" content="2025-09-19">
 
-<title>Understanding Positive Definite Kernels – Mostly Mathematics</title>
+<title>Reproducing Kernel Hilbert Spaces - An Introduction – Mostly Mathematics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -141,7 +112,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/welcome/index.html">Understanding Positive Definite Kernels</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Reproducing Kernel Hilbert Spaces - An Introduction</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -150,8 +121,8 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/welcome/index.html">Understanding Positive Definite Kernels</a></li></ol></nav>
-      <h1 class="title">Understanding Positive Definite Kernels</h1>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Reproducing Kernel Hilbert Spaces - An Introduction</a></li></ol></nav>
+      <h1 class="title">Reproducing Kernel Hilbert Spaces - An Introduction</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Analysis</div>
               </div>
@@ -165,7 +136,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 18, 2025</p>
+        <p class="date">September 19, 2025</p>
       </div>
     </div>
     
@@ -199,7 +170,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/fourth post/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/fourth post/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Reproducing Kernel Hilbert Spaces - An Introduction</span></a>
   </div>
 </li>
@@ -217,7 +188,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/welcome/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/welcome/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Understanding Positive Definite Kernels</span></a>
   </div>
 </li>
@@ -236,62 +207,8 @@ window.Quarto = {
 
 
 
-<section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>In functional analysis and related areas, we often encounter functions that speak of the relationships between points in a space (a metric or a distance function for instance). A kernel is such a function, taking two inputs and returning a real or a complex number, which can be interpreted as a measure of similarity or interaction.</p>
-<p>Amongst these kernels, a special class called positive definite kernels play a central role as they are characterized by an intrinsic property that guarantees the existence of an associated Hilbert space of functions (a reproducing kernel Hilbert space, which we shall look into in another post).</p>
-<p>Positive definite kernels are not just abstract objects, they also provide the foundation for constructing function spaces, understanding linear operators, and formulating problems in approximation theory and analysis. In this post, we will define positive definite kernels, explore some properties, and look into some examples.</p>
-</section>
-<section id="positive-definite-kernels" class="level3">
-<h3 class="anchored" data-anchor-id="positive-definite-kernels">Positive Definite Kernels</h3>
-<p>Let us look at positive definite kernels in the real-valued case first.</p>
-<blockquote class="blockquote">
-<p>Let <span class="math inline">\(\mathcal{X}\)</span> be a set. <span class="math inline">\(k: \mathcal{X} \times \mathcal{X} \to \mathbb{R}\)</span> is a <strong>positive definite kernel</strong> if <span class="math inline">\(k(x,y) = k(y,x)\)</span> and for every <span class="math inline">\(x_1, \dots, x_n \in \mathcal{X}\)</span> and <span class="math inline">\(c_1, \dots, c_n \in \mathbb{R}\)</span> we have that <span class="math display">\[\sum_{i,j=1}^{n} c_i c_j k(x_i, x_j) \ge 0,\]</span> i.e.&nbsp;the symmetric matrix:</p>
-</blockquote>
-<blockquote class="blockquote">
-<p><span class="math inline">\((k(x_i, x_j))_{i,j=1}^{n} = \begin{pmatrix}
-k(x_1, x_1) &amp; \cdots &amp; k(x_1, x_n) \\
-\vdots &amp; \ddots &amp; \vdots \\
-k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
-\end{pmatrix}\)</span> is positive semidefinite.</p>
-</blockquote>
-<p>Note that the symmetric matrix <span class="math inline">\((k(x_i, x_j))_{i,j=1}^{n}\)</span> is often called a <strong>Gram matrix</strong>.</p>
-<p>In the complex-valued case, the Hermitian property <span class="math inline">\(k(y,x) = \overline{k(x,y)}\)</span> is derived from the positive-definiteness itself.</p>
-<blockquote class="blockquote">
-<p>Let <span class="math inline">\(\mathcal{X}\)</span> be a set. <span class="math inline">\(k : \mathcal{X} \times \mathcal{X} \to \mathbb{C}\)</span> is a <strong>positive definite kernel</strong> if for every <span class="math inline">\(x_1, \dots, x_n \in \mathcal{X}\)</span> and <span class="math inline">\(c_1, \dots, c_n \in \mathbb{C}\)</span>, we have that <span class="math display">\[\sum_{i,j=1}^{n} c_i \overline{c_j} k(x_i, x_j) \ge 0.\]</span></p>
-</blockquote>
-<p>Before looking into some examples of positive definite kernels, we will look into some properties of the same and try to construct new positive definite kernels from the existing ones.</p>
-<blockquote class="blockquote">
-<p><strong>Proposition 1:</strong> Assume <span class="math inline">\(k : \mathcal{X} \times \mathcal{X} \to \mathbb{C}\)</span> is positive definite. Then, for any <span class="math inline">\(x, y \in \mathcal{X}\)</span>,<br>
-1. <span class="math inline">\(k(x,x) \geq 0\)</span>.<br>
-2. <span class="math inline">\(\lvert k(x,y) \rvert^2 \leq k(x,x) k(y,y)\)</span>.</p>
-</blockquote>
-<p>The first statement is obvious from the definition (take <span class="math inline">\(n=1, c_1 = 1, x_1 = x\)</span>). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!) and hence the determinant must be non-negative which gives us this inequality.</p>
-<blockquote class="blockquote">
-<p><strong>Proposition 2:</strong> If <span class="math inline">\(k_i : \mathcal{X} \times \mathcal{X} \to \mathbb{C} \ (i=1,2,\ldots)\)</span> are positive definite kernels, then the following are also positive definite kernels.<br>
-1. <span class="math inline">\(ak_1 + bk_2 \quad (a,b \geq 0)\)</span> (positive combination)<br>
-2. <span class="math inline">\(k_1 k_2\)</span> (product)<br>
-3. <span class="math inline">\(\lim_{i \to \infty} k_i(x,y),\)</span> assuming the limit exists.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p><strong>Proposition 3:</strong> Let <span class="math inline">\(V\)</span> be a vector space with an inner product <span class="math inline">\(\langle \cdot , \cdot \rangle\)</span>. If we have a map <span class="math inline">\(\Phi : \mathcal{X} \to V; x \mapsto \Phi(x)\)</span>, a positive definite kernel on <span class="math inline">\(\mathcal{X}\)</span> is defined by <span class="math display">\[k(x,y) = \langle \Phi(x), \Phi(y) \rangle.\]</span></p>
-</blockquote>
-<blockquote class="blockquote">
-<p><strong>Proposition 4:</strong> Let <span class="math inline">\(k : \mathcal{X} \times \mathcal{X} \to \mathbb{C}\)</span> be a positive definite kernel and <span class="math inline">\(f : \mathcal{X} \to \mathbb{C}\)</span> be an arbitrary function. Then, <span class="math inline">\(\tilde{k}(x,y) = f(x) \, k(x,y) \, \overline{f(y)}\)</span> is positive definite. In particular, <span class="math inline">\(f(x)\overline{f(y)}\)</span> is a positive definite kernel.</p>
-</blockquote>
-</section>
-<section id="examples" class="level3">
-<h3 class="anchored" data-anchor-id="examples">Examples</h3>
-<ul>
-<li>Linear Kernel: <span class="math display">\[k_0(x,y) = x^{T}y\]</span></li>
-<li>Exponential Kernel: <span class="math display">\[k_E(x,y) = exp(\beta x^{T}y) \quad \text{where} \quad \beta &gt; 0\]</span><br>
-</li>
-<li>Gaussian Radial Basis Function Kernel: <span class="math display">\[
-k_G(x,y) = \exp\!\left(-\frac{1}{2\sigma^2}\|x-y\|^2\right) \quad \text{where} \quad (\sigma &gt; 0)\]</span></li>
-</ul>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

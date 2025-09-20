@@ -69,8 +69,8 @@ Please check the references for a rigorous proof.
 
 Note that the theorem crucially needs two assumptions:  
 
-> - If the system is **not measure-preserving**, then the measure can diminish, and recurrence may fail (points might eventually disappear into a set of measure zero).  
-> - If the space does **not have finite measure** (for example, infinite measure spaces like $\mathbb{R}$ with Lebesgue measure), then points may never return since finiteness of the measures takes up a key role in the proof.  
+- If the system is **not measure-preserving**, then the measure can diminish, and recurrence may fail (points might eventually disappear into a set of measure zero).  
+- If the space does **not have finite measure** (for example, infinite measure spaces like $\mathbb{R}$ with Lebesgue measure), then points may never return since finiteness of the measures takes up a key role in the proof.  
 
 So we obtain recurrence (the exact answer we were looking for) by combining **finite measures** with **measure preservation**.
 

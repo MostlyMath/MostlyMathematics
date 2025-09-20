@@ -161,7 +161,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">Poincaré Recurrence</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">Poincaré Recurrence</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -170,7 +170,7 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">Poincaré Recurrence</a></li></ol></nav>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/my-first-post/index.html">Poincaré Recurrence</a></li></ol></nav>
       <h1 class="title">Poincaré Recurrence</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Analysis</div>
@@ -220,6 +220,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/fourth post/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reproducing Kernel Hilbert Spaces - An Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/my-first-post/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Poincaré Recurrence</span></a>
   </div>
@@ -233,7 +239,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/welcome/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reproducing Kernel Hilbert Spaces - An Overview</span></a>
+ <span class="menu-text">Understanding Positive Definite Kernels</span></a>
   </div>
 </li>
       </ul>
@@ -291,13 +297,11 @@ x, \; T(x), \; T^2(x), \; T^3(x), \dots
 <p>Therefore, our assumption must be wrong. Almost every point in <span class="math inline">\(E\)</span> <strong>must return to <span class="math inline">\(E\)</span> infinitely often</strong>.</p>
 <p>Please check the references for a rigorous proof.</p>
 <p>Note that the theorem crucially needs two assumptions:</p>
-<blockquote class="blockquote">
 <ul>
 <li>If the system is <strong>not measure-preserving</strong>, then the measure can diminish, and recurrence may fail (points might eventually disappear into a set of measure zero).<br>
 </li>
 <li>If the space does <strong>not have finite measure</strong> (for example, infinite measure spaces like <span class="math inline">\(\mathbb{R}\)</span> with Lebesgue measure), then points may never return since finiteness of the measures takes up a key role in the proof.</li>
 </ul>
-</blockquote>
 <p>So we obtain recurrence (the exact answer we were looking for) by combining <strong>finite measures</strong> with <strong>measure preservation</strong>.</p>
 </section>
 <section id="references" class="level2">
