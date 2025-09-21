@@ -7,6 +7,7 @@ nocite: |
   @fukumizu2008kernel
   @berlinet2004reproducing
   @aronszajn1950theory
+  @wiki:rkhs
 ---
 
 ### Introduction
@@ -20,7 +21,7 @@ $$ f(x) = {\langle f, k_x \rangle}_{\mathcal{H}} $$
 
 Why is it useful? Firstly it simply guarantees that point evaluation is always a nice, continuous operation (unlike in some spaces such as ${\mathcal{L}}^2$, where evaluation doesn’t even make sense). Secondly it lays the mathematical foundation for many mathematical applications including machine learning algorithms (like kernel methods and Gaussian processes), signal processing, approximation theory, and even parts of harmonic analysis rely substantially on RKHS.
 
-In this post, we will understand the relation between positive definite kernels and reproducing kernel Hilbert spaces. We will see that every RKHS comes with a unique reproducing kernel, and that every positive definite kernel gives rise to a corresponding RKHS. 
+In this post, we will understand the relation between positive definite kernels and reproducing kernel Hilbert spaces. We will see that every RKHS comes with a unique reproducing kernel which is positive definite, and that every positive definite kernel gives rise to a corresponding RKHS. 
 
 ## Reproducing Kernel Hilbert Spaces (RKHS)
 

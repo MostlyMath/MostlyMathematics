@@ -13,7 +13,7 @@ nocite: |
 
 This post is Part I of the series on reproducing kernel Hilbert spaces (RKHS). In functional analysis and related areas, we often encounter functions that speak of the relationships between points in a space (a metric or a distance function for instance). A kernel is such a function, taking two inputs and returning a real or a complex number, which can be interpreted as a measure of similarity or interaction.
 
-Amongst these kernels, a special class called positive definite kernels play a central role as they are characterized by an intrinsic property that guarantees the existence of an associated Hilbert space of functions (a reproducing kernel Hilbert space which we will look into to in the next post.
+Amongst these kernels, a special class called positive definite kernels play a central role as they are characterized by an intrinsic property that guarantees the existence of an associated Hilbert space of functions (a reproducing kernel Hilbert space which we will look into in the next post).
 
 Positive definite kernels are not just abstract objects, they also provide the foundation for constructing function spaces, understanding linear operators, and formulating problems in approximation theory and analysis. In this post, we will define positive definite kernels, explore some properties, and look into some examples.
 
@@ -44,9 +44,9 @@ Before looking into some examples of positive definite kernels, we will look int
   > 1. $k(x,x) \geq 0$.  
   > 2. $\lvert k(x,y) \rvert^2 \leq k(x,x) k(y,y)$.
 
-> Proof: For (1), it is obvious from the definition (take $n=1, c_1 = 1, x_1 = x$). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!), the determinant must be non-negative which gives us this inequality.
+> Proof: (1) is obvious from the definition (take $n=1, c_1 = 1, x_1 = x$). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!), the determinant must be non-negative which gives us this inequality.
 
-From Proposition 1 we get the first hints of structure hidden in positive definite kernels. The non-negativity of $k(x,x)$ and the Cauchy-Schwarz-type inequality suggest that these kernels behave a lot like inner products even if we haven’t formally embedded the points in a Hilbert space yet.
+From Proposition 1 we get the hints of structure hidden in positive definite kernels. The non-negativity of $k(x,x)$ and the Cauchy-Schwarz-type inequality suggest that these kernels behave a lot like inner products even if we haven’t formally embedded the points in a Hilbert space yet.
 
 One nice property of positive definite kernels is that adding kernels, multiplying them, or taking limits produces new positive definite kernels. This lets us construct more complex kernels from simple ones.
 
@@ -56,7 +56,7 @@ One nice property of positive definite kernels is that adding kernels, multiplyi
   > 2. $k_1 k_2$ (product)  
   > 3. $\lim_{i \to \infty} k_i(x,y),$ assuming the limit exists.  
 
-> Proof: For (1) and (3), it is easy to see and for (2), it is enough to show that if two Hermitian matrices $A$ and $B$ are positive semidefinite, so is their component wise product (the Hadamard product). This can be done by taking the eigendecomposition of $A$ and then checking for the positve semidefiniteness of the Hadamard product.
+> Proof: (1) and (3) are easy to see and for (2), it is enough to show that if two Hermitian matrices $A$ and $B$ are positive semidefinite, so is their component wise product (the Hadamard product). This can be done by taking the eigendecomposition of $A$ and then checking for the positve semidefiniteness of the Hadamard product.
 
 So far we looked at kernels abstractly. Proposition 3 shows how positive definite kernels naturally arise from inner products in some vector space. This is the first step towards seeing kernels encoding hidden geometries.
 
@@ -66,9 +66,7 @@ So far we looked at kernels abstractly. Proposition 3 shows how positive definit
 > $$
 \begin{align*}
 \sum_{i,j=1}^n c_i \overline{c_j} k(x_i, x_j)
-&= \sum_{i,j=1}^n c_i \overline{c_j} \langle \Phi(x_i), \Phi(x_j) \rangle \\
-&= \left\langle \sum_{i=1}^n c_i \Phi(x_i), \sum_{j=1}^n c_j \Phi(x_j) \right\rangle \\
-&= \left\| \sum_{i=1}^n c_i \Phi(x_i) \right\|^2 \geq 0.
+&= \sum_{i,j=1}^n c_i \overline{c_j} \langle \Phi(x_i), \Phi(x_j) \rangle = \left\langle \sum_{i=1}^n c_i \Phi(x_i), \sum_{j=1}^n c_j \Phi(x_j) \right\rangle = \left\| \sum_{i=1}^n c_i \Phi(x_i) \right\|^2 \geq 0.
 \end{align*}
 $$
 
@@ -76,7 +74,7 @@ Proposition 4 shows how kernels can be “reweighted” by arbitrary functions t
 
 > **Proposition 4:** Let $k : \mathcal{X} \times \mathcal{X} \to \mathbb{C}$ be a positive definite kernel and $f : \mathcal{X} \to \mathbb{C}$ be an arbitrary function. Then, $\tilde{k}(x,y) = f(x) \, k(x,y) \, \overline{f(y)}$ is positive definite. In particular, $f(x)\overline{f(y)}$ is a positive definite kernel.
 
->Proof: Consider any $n \in \mathbb{N}$, any $(x_1, \ldots, x_n \in \mathcal{X}$, and any $c_1, \ldots, c_n \in \mathbb{C}$ 
+>Proof: Consider any $n \in \mathbb{N}$, $x_1, \ldots, x_n \in \mathcal{X}$, and $c_1, \ldots, c_n \in \mathbb{C}$ 
 $$
 \sum_{i,j=1}^n c_i \overline{c_j} \tilde{k}(x_i, x_j)
 = \sum_{i,j=1}^n c_i \overline{c_j} f(x_i) k(x_i, x_j) \overline{f(x_j)}  

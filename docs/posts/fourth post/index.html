@@ -262,7 +262,7 @@ window.Quarto = {
 <p>One reason is that positive definite kernels secretly encode a hidden geometry: each kernel corresponds to a Hilbert space of functions, where the kernel itself acts as a sort of “building block.” This Hilbert space is what we call a Reproducing Kernel Hilbert Space (RKHS).</p>
 <p>What makes an RKHS so interesting is the reproducing property. In an RKHS <span class="math inline">\(\mathcal{H}\)</span>, evaluating a function at a point <span class="math inline">\(x\)</span> can be done by taking an inner product with a special function <span class="math inline">\(k_x\)</span> corresponding to that point: <span class="math display">\[ f(x) = {\langle f, k_x \rangle}_{\mathcal{H}} \]</span></p>
 <p>Why is it useful? Firstly it simply guarantees that point evaluation is always a nice, continuous operation (unlike in some spaces such as <span class="math inline">\({\mathcal{L}}^2\)</span>, where evaluation doesn’t even make sense). Secondly it lays the mathematical foundation for many mathematical applications including machine learning algorithms (like kernel methods and Gaussian processes), signal processing, approximation theory, and even parts of harmonic analysis rely substantially on RKHS.</p>
-<p>In this post, we will understand the relation between positive definite kernels and reproducing kernel Hilbert spaces. We will see that every RKHS comes with a unique reproducing kernel, and that every positive definite kernel gives rise to a corresponding RKHS.</p>
+<p>In this post, we will understand the relation between positive definite kernels and reproducing kernel Hilbert spaces. We will see that every RKHS comes with a unique reproducing kernel which is positive definite, and that every positive definite kernel gives rise to a corresponding RKHS.</p>
 </section>
 <section id="reproducing-kernel-hilbert-spaces-rkhs" class="level2">
 <h2 class="anchored" data-anchor-id="reproducing-kernel-hilbert-spaces-rkhs">Reproducing Kernel Hilbert Spaces (RKHS)</h2>
@@ -324,6 +324,9 @@ Berlinet, Alain, and Christine Thomas-Agnan. 2004. <em>Reproducing Kernel Hilber
 </div>
 <div id="ref-fukumizu2008kernel" class="csl-entry" role="listitem">
 Fukumizu, Kenji. 2008. <span>“Elements of Positive Definite Kernel and Reproducing Kernel Hilbert Space: Statistical Inference with Reproducing Kernel Hilbert Space.”</span> Institute of Statistical Mathematics, ROIS; Department of Statistical Science, Graduate University for Advanced Studies; <a href="https://www.ism.ac.jp/~fukumizu/H20_kernel/Kernel_2_elements.pdf" class="uri">https://www.ism.ac.jp/~fukumizu/H20_kernel/Kernel_2_elements.pdf</a>.
+</div>
+<div id="ref-wiki:rkhs" class="csl-entry" role="listitem">
+Wikipedia contributors. 2024. <span>“<span class="nocase">Reproducing kernel Hilbert space — Wikipedia<span>,</span> The Free Encyclopedia</span>.”</span> <a href="https://en.wikipedia.org/wiki/Reproducing_kernel_Hilbert_space" class="uri">https://en.wikipedia.org/wiki/Reproducing_kernel_Hilbert_space</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

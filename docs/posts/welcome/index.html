@@ -259,7 +259,7 @@ window.Quarto = {
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
 <p>This post is Part I of the series on reproducing kernel Hilbert spaces (RKHS). In functional analysis and related areas, we often encounter functions that speak of the relationships between points in a space (a metric or a distance function for instance). A kernel is such a function, taking two inputs and returning a real or a complex number, which can be interpreted as a measure of similarity or interaction.</p>
-<p>Amongst these kernels, a special class called positive definite kernels play a central role as they are characterized by an intrinsic property that guarantees the existence of an associated Hilbert space of functions (a reproducing kernel Hilbert space which we will look into to in the next post.</p>
+<p>Amongst these kernels, a special class called positive definite kernels play a central role as they are characterized by an intrinsic property that guarantees the existence of an associated Hilbert space of functions (a reproducing kernel Hilbert space which we will look into in the next post).</p>
 <p>Positive definite kernels are not just abstract objects, they also provide the foundation for constructing function spaces, understanding linear operators, and formulating problems in approximation theory and analysis. In this post, we will define positive definite kernels, explore some properties, and look into some examples.</p>
 </section>
 <section id="positive-definite-kernels" class="level3">
@@ -287,9 +287,9 @@ k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
 2. <span class="math inline">\(\lvert k(x,y) \rvert^2 \leq k(x,x) k(y,y)\)</span>.</p>
 </blockquote>
 <blockquote class="blockquote">
-<p>Proof: For (1), it is obvious from the definition (take <span class="math inline">\(n=1, c_1 = 1, x_1 = x\)</span>). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!), the determinant must be non-negative which gives us this inequality.</p>
+<p>Proof: (1) is obvious from the definition (take <span class="math inline">\(n=1, c_1 = 1, x_1 = x\)</span>). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!), the determinant must be non-negative which gives us this inequality.</p>
 </blockquote>
-<p>From Proposition 1 we get the first hints of structure hidden in positive definite kernels. The non-negativity of <span class="math inline">\(k(x,x)\)</span> and the Cauchy-Schwarz-type inequality suggest that these kernels behave a lot like inner products even if we haven’t formally embedded the points in a Hilbert space yet.</p>
+<p>From Proposition 1 we get the hints of structure hidden in positive definite kernels. The non-negativity of <span class="math inline">\(k(x,x)\)</span> and the Cauchy-Schwarz-type inequality suggest that these kernels behave a lot like inner products even if we haven’t formally embedded the points in a Hilbert space yet.</p>
 <p>One nice property of positive definite kernels is that adding kernels, multiplying them, or taking limits produces new positive definite kernels. This lets us construct more complex kernels from simple ones.</p>
 <blockquote class="blockquote">
 <p><strong>Proposition 2:</strong> If <span class="math inline">\(k_i : \mathcal{X} \times \mathcal{X} \to \mathbb{C} \ (i=1,2,\ldots)\)</span> are positive definite kernels, then the following are also positive definite kernels.<br>
@@ -298,7 +298,7 @@ k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
 3. <span class="math inline">\(\lim_{i \to \infty} k_i(x,y),\)</span> assuming the limit exists.</p>
 </blockquote>
 <blockquote class="blockquote">
-<p>Proof: For (1) and (3), it is easy to see and for (2), it is enough to show that if two Hermitian matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are positive semidefinite, so is their component wise product (the Hadamard product). This can be done by taking the eigendecomposition of <span class="math inline">\(A\)</span> and then checking for the positve semidefiniteness of the Hadamard product.</p>
+<p>Proof: (1) and (3) are easy to see and for (2), it is enough to show that if two Hermitian matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are positive semidefinite, so is their component wise product (the Hadamard product). This can be done by taking the eigendecomposition of <span class="math inline">\(A\)</span> and then checking for the positve semidefiniteness of the Hadamard product.</p>
 </blockquote>
 <p>So far we looked at kernels abstractly. Proposition 3 shows how positive definite kernels naturally arise from inner products in some vector space. This is the first step towards seeing kernels encoding hidden geometries.</p>
 <blockquote class="blockquote">
@@ -308,9 +308,7 @@ k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
 <p>Proof: Let <span class="math inline">\(x_1, \ldots, x_n\)</span> in <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(c_1, \ldots, c_n \in \mathbb{C}\)</span>. <span class="math display">\[
 \begin{align*}
 \sum_{i,j=1}^n c_i \overline{c_j} k(x_i, x_j)
-&amp;= \sum_{i,j=1}^n c_i \overline{c_j} \langle \Phi(x_i), \Phi(x_j) \rangle \\
-&amp;= \left\langle \sum_{i=1}^n c_i \Phi(x_i), \sum_{j=1}^n c_j \Phi(x_j) \right\rangle \\
-&amp;= \left\| \sum_{i=1}^n c_i \Phi(x_i) \right\|^2 \geq 0.
+&amp;= \sum_{i,j=1}^n c_i \overline{c_j} \langle \Phi(x_i), \Phi(x_j) \rangle = \left\langle \sum_{i=1}^n c_i \Phi(x_i), \sum_{j=1}^n c_j \Phi(x_j) \right\rangle = \left\| \sum_{i=1}^n c_i \Phi(x_i) \right\|^2 \geq 0.
 \end{align*}
 \]</span></p>
 </blockquote>
@@ -319,7 +317,7 @@ k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
 <p><strong>Proposition 4:</strong> Let <span class="math inline">\(k : \mathcal{X} \times \mathcal{X} \to \mathbb{C}\)</span> be a positive definite kernel and <span class="math inline">\(f : \mathcal{X} \to \mathbb{C}\)</span> be an arbitrary function. Then, <span class="math inline">\(\tilde{k}(x,y) = f(x) \, k(x,y) \, \overline{f(y)}\)</span> is positive definite. In particular, <span class="math inline">\(f(x)\overline{f(y)}\)</span> is a positive definite kernel.</p>
 </blockquote>
 <blockquote class="blockquote">
-<p>Proof: Consider any <span class="math inline">\(n \in \mathbb{N}\)</span>, any <span class="math inline">\((x_1, \ldots, x_n \in \mathcal{X}\)</span>, and any <span class="math inline">\(c_1, \ldots, c_n \in \mathbb{C}\)</span> <span class="math display">\[
+<p>Proof: Consider any <span class="math inline">\(n \in \mathbb{N}\)</span>, <span class="math inline">\(x_1, \ldots, x_n \in \mathcal{X}\)</span>, and <span class="math inline">\(c_1, \ldots, c_n \in \mathbb{C}\)</span> <span class="math display">\[
 \sum_{i,j=1}^n c_i \overline{c_j} \tilde{k}(x_i, x_j)
 = \sum_{i,j=1}^n c_i \overline{c_j} f(x_i) k(x_i, x_j) \overline{f(x_j)}  
 \]</span> Let <span class="math inline">\(d_i = c_i f(x_i)\)</span>. Then since <span class="math inline">\(k\)</span> is positive definite we have <span class="math display">\[
