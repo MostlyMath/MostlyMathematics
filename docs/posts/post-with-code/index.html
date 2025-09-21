@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -239,33 +259,43 @@ window.Quarto = {
 
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>The ergodic theorem was proved in 1931, first by J. von Neumann in the case of <span class="math inline">\(L^2\)</span> convergence and then by D. Birkhoff in the much stronger case of pointwise convergence which solved the most fundamental question in statistical mechanics: when does the time average converges to the space average.</p>
+<p>The ergodic theorem was proved in 1931, first by J. von Neumann in the case of <span class="math inline">\({\mathcal{L}}^2\)</span> convergence and then by D. Birkhoff in the much stronger case of pointwise convergence which solved the most fundamental question in statistical mechanics: when does the time average converges to the space average? Before getting into this let us think about what <a href="\posts\my-first-post">Poincaré Recurrence</a> gave us:</p>
+<blockquote class="blockquote">
+<p>Let <span class="math inline">\(T : \mathcal{X} \to \mathcal{X}\)</span> be a measure-preserving transformation of a probability space <span class="math inline">\((\mathcal{X}, \beta, \mu)\)</span>. Let <span class="math inline">\(\mathcal{E} \in \beta\)</span> with <span class="math inline">\(m(\mathcal{E}) &gt; 0\)</span>. Then almost all points of <span class="math inline">\(\mathcal{E}\)</span> return infinitely often to <span class="math inline">\(\mathcal{E}\)</span> under positive iteration by <span class="math inline">\(T\)</span> (i.e., there exists <span class="math inline">\(\mathcal{F} \subseteq \mathcal{E}\)</span> with <span class="math inline">\(m(\mathcal{F}) = m(\mathcal{E})\)</span> such that for each <span class="math inline">\(x \in \mathcal{F}\)</span> there is a sequence <span class="math inline">\(n_1 &lt; n_2 &lt; n_3 &lt; \cdots\)</span> of natural numbers with <span class="math inline">\(T^{n_i}(x) \in \mathcal{F}\)</span> for each <span class="math inline">\(i\)</span>).</p>
+</blockquote>
+<p>So what we have is a measure preserving system, then we can take a measurable set <span class="math inline">\(\mathcal{E}\)</span> with a point <span class="math inline">\(x \in \mathcal{E}\)</span> which returns infinitely often to <span class="math inline">\(\mathcal{E}\)</span>. Poincaré Recurrence guarantees the existence of such a point. What we want to find now is in some sense: the frequency of the occurence of the points of the orbit of <span class="math inline">\(x\)</span> in <span class="math inline">\(\mathcal{E}\)</span>.</p>
+<p>Let <span class="math inline">\(\mathcal{O}(x) = \{ x, T(x), T^2(x), \dots \}\)</span> be the orbit of <span class="math inline">\(x \in \mathcal{E}\)</span>. Let <span class="math inline">\(\mathcal{O}_N(x) := \{ x, \dots , T^{N-1}(x) \}\)</span></p>
+<p>What we want to find is the frequency of the number of points of <span class="math inline">\(\mathcal{O}_N(x)\)</span> that are also in <span class="math inline">\(E\)</span> which can be represented as follows: <span class="math display">\[ \frac{1}{N} \sum_{i=0}^{N-1} X_E(T^i(x)), \]</span> where <span class="math inline">\(X_E\)</span> is the characteristic function of <span class="math inline">\(E\)</span>. Now we could wonder what would happen if <span class="math inline">\(N\)</span> keeps increasing. Consider the following limit: <span class="math display">\[ \lim_{N \to \infty} \frac{1}{N} \sum_{i=0}^{N-1} X_E(T^i(x)) \]</span> Some questions we may have are: Will such a limit exist in the first place? Under what condidtions can such a limit exist? Incase it does, what can it possibly converge to?</p>
+<p>Let us genralize our problem to an arbitary measurable or integrable function <span class="math inline">\(f\)</span> instead of the characteristic function and call the limit the time average. So now we want to know what could possibly happen to <span class="math display">\[ \lim_{N \to \infty} \frac{1}{N} \sum_{i=0}^{N-1} f(T^i(x)) \]</span></p>
+<p>Boltzmann (in a very physics pov perhaps) hypothesized that the time average converges to the space average which is <span class="math inline">\(\int f d\mu\)</span>. This is not quite true always which leads us to the Birkhoff’s ergodic theorem which says that in the case of an ergodic system, the time average converges to the space average. Let us first understand what an ergodic transformation is.</p>
 </section>
 <section id="ergodicity" class="level3">
 <h3 class="anchored" data-anchor-id="ergodicity">Ergodicity</h3>
-<p>Ergodicity formalizes the idea of when a dynamical system cannot be broken down into smaller invariant pieces with positive measure.</p>
+<p>Ergodicity formalizes the idea of when a dynamical system cannot be broken down into smaller invariant pieces with positive measure. Let us first see what an invariant set is:</p>
 <blockquote class="blockquote">
 <p>Let <span class="math inline">\(T: \mathcal{X} \rightarrow \mathcal{X}\)</span> be a transformation. A subset <span class="math inline">\(\mathcal{B}\)</span> of <span class="math inline">\(\mathcal{X}\)</span> is <strong>invariant</strong> under <span class="math inline">\(T\)</span> if <span class="math inline">\(T^{-1}(\mathcal{B})=\mathcal{B}\)</span>.</p>
 </blockquote>
+<p>Note that <span class="math inline">\(T\)</span> need not be invertible here. <span class="math inline">\(T^{-1}(\mathcal{B})\)</span> just refers to all the points in <span class="math inline">\(\mathcal{X}\)</span> that <span class="math inline">\(T\)</span> takes to <span class="math inline">\(\mathcal{B}\)</span>. Now we can define what an ergodic transformation is.</p>
 <blockquote class="blockquote">
 <p>A measure preserving transformation T on a probability space is <strong>ergodic</strong> if for every <span class="math inline">\(T\)</span>-invariant set <span class="math inline">\(\mathcal{B}\)</span> in <span class="math inline">\(\beta\)</span>, either <span class="math inline">\(\mu(\mathcal{B})=0\)</span> or <span class="math inline">\(\mu(\mathcal{B})=1\)</span>.</p>
 </blockquote>
 <p>In other words, the system is metrically indecomposable i.e: any invariant set is either negligible or occupies the whole space.</p>
 <p><strong>Example:</strong> Consider a rational rotation on the following set <span class="math inline">\(\mathcal{A}\)</span> in <span class="math inline">\(\mathbb{R}/\mathbb{Z}\)</span>. <span class="math display">\[
 \mathcal{A} = \bigcup_{i=0}^{q-1} \left[ \frac{i}{q},\frac{i}{q}+\frac{1}{2q}\right].
-\]</span> This set is invariant under <span class="math inline">\(R_\alpha\)</span> as it sends each interval in <span class="math inline">\(\mathcal{A}\)</span> into another one in <span class="math inline">\(\mathcal{A}\)</span> itself but the measure of this set lies between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>.</p>
+\]</span> This set is invariant under <span class="math inline">\(R_\alpha\)</span> as it sends each interval in <span class="math inline">\(\mathcal{A}\)</span> into another one in <span class="math inline">\(\mathcal{A}\)</span> itself but the measure of this set lies between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> making it non-ergodic. Turns out irrational rotations are ergodic which we will probably look into in another post (along with more consequences of ergodicity).</p>
+<p>We are now ready to state the Birkhoff’s ergodic theorem. Note that we restrict ourselves to a probability space since any finite measure space can be normalized accordingly.</p>
 </section>
 <section id="the-birkhoffs-ergodic-theorem" class="level3">
 <h3 class="anchored" data-anchor-id="the-birkhoffs-ergodic-theorem">The Birkhoff’s Ergodic Theorem</h3>
 <blockquote class="blockquote">
-<p>Let <span class="math inline">\((\mathcal{X},\beta,\mu)\)</span> be a probability space and let <span class="math inline">\(T\)</span> be an ergodic measure-preserving transformation on <span class="math inline">\((\mathcal{X},\beta,\mu)\)</span>. If <span class="math inline">\(f: \mathcal{X} \to \mathbb{R}\)</span> is an integrable function, then for <span class="math inline">\(\mu\)</span>-a.e <span class="math inline">\(x \in \mathcal{X}\)</span> <span class="math display">\[
+<p>Let <span class="math inline">\((\mathcal{X},\beta,\mu)\)</span> be a probability space and let <span class="math inline">\(T\)</span> be an ergodic transformation on <span class="math inline">\((\mathcal{X},\beta,\mu)\)</span>. If <span class="math inline">\(f: \mathcal{X} \to \mathbb{R}\)</span> is an integrable function, then for <span class="math inline">\(\mu\)</span>-a.e <span class="math inline">\(x \in \mathcal{X}\)</span> <span class="math display">\[
 \lim_{n \to \infty} \frac{1}{n} \sum_{i=0}^{n-1} f(T^i(x)) = \int f d\mu
 \]</span></p>
 </blockquote>
 </section>
 <section id="can-ergodicity-be-relaxed" class="level3">
 <h3 class="anchored" data-anchor-id="can-ergodicity-be-relaxed">Can ergodicity be relaxed?</h3>
-<p>The general version of the Birkhoff’s Ergodic theorem for when <span class="math inline">\(T\)</span> is not ergodic is looked at now.</p>
+<p>Now we wonder what happens if we do not have an ergodic system. Turns out, in the case of measure-preserving systems, the time average does converge, not to the space average, but to a <span class="math inline">\(T\)</span>-invariant function as stated below and we can also very easily find the integral of this limit function.</p>
 <blockquote class="blockquote">
 <p>Let <span class="math inline">\((\mathcal{X},\beta,\mu)\)</span> be a probability space and let <span class="math inline">\(T\)</span> be a measure-preserving transformation on <span class="math inline">\((\mathcal{X},\beta,\mu)\)</span>. If <span class="math inline">\(f: \mathcal{X} \to \mathbb{R}\)</span> is an integrable function, then</p>
 </blockquote>
@@ -281,11 +311,26 @@ window.Quarto = {
 \end{equation*}\]</span></li>
 </ol>
 </blockquote>
+<p>The proof is quite lengthy and I am skipping it here. One can refer to <span class="citation" data-cites="silva2008">(<a href="#ref-silva2008" role="doc-biblioref">Silva 2008</a>)</span> for a beginner-friendly proof. <span class="citation" data-cites="assani2003wiener">(<a href="#ref-assani2003wiener" role="doc-biblioref">Assani 2003</a>)</span> has 3 very interesting proofs (one using the maximal inequality, one using a combinatorial argument and the last using a variational inequality) which are a little advanced.</p>
+</section>
+<section id="references" class="level3">
+
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-assani2003wiener" class="csl-entry" role="listitem">
+Assani, Idris. 2003. <em>Wiener Wintner Ergodic Theorems</em>. River Edge, NJ: World Scientific.
+</div>
+<div id="ref-silva2008" class="csl-entry" role="listitem">
+Silva, César E. 2008. <em>Invitation to Ergodic Theory</em>. Vol. 42. Student Mathematical Library. Providence, RI: American Mathematical Society.
+</div>
+<div id="ref-walters1982" class="csl-entry" role="listitem">
+Walters, Peter. 1982. <em>An Introduction to Ergodic Theory</em>. Vol. 79. Graduate Texts in Mathematics. New York: Springer-Verlag.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
