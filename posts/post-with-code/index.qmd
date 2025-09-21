@@ -69,7 +69,7 @@ Now we wonder what happens if we do not have an ergodic system. Turns out, in th
         \int_{\mathcal{A}} f d\mu = \int_{\mathcal{A}} \bar{f} d\mu.
     \end{equation*}
 
-The proof is quite lengthy and I am skipping it here. One can refer to [@silva2008] for a beginner-friendly proof. [@assani2003wiener] has 3 very interesting proofs (one using the maximal inequality, one using a combinatorial argument and the last using a variational inequality) which are a little advanced.
+The proof is quite lengthy and I am skipping it here. One can refer to [@silva2008] for a beginner-friendly proof. One can also refer to [@assani2003wiener] which has 3 very interesting proofs (one using the maximal inequality, one using a combinatorial argument and the last using a variational inequality) which are a little advanced.
 
 ### References
 
