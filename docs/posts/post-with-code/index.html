@@ -70,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -208,8 +237,53 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>The ergodic theorem was proved in 1931, first by J. von Neumann in the case of <span class="math inline">\(L^2\)</span> convergence and then by D. Birkhoff in the much stronger case of pointwise convergence which solved the most fundamental question in statistical mechanics: when does the time average converges to the space average.</p>
+</section>
+<section id="ergodicity" class="level3">
+<h3 class="anchored" data-anchor-id="ergodicity">Ergodicity</h3>
+<p>Ergodicity formalizes the idea of when a dynamical system cannot be broken down into smaller invariant pieces with positive measure.</p>
+<blockquote class="blockquote">
+<p>Let <span class="math inline">\(T: \mathcal{X} \rightarrow \mathcal{X}\)</span> be a transformation. A subset <span class="math inline">\(\mathcal{B}\)</span> of <span class="math inline">\(\mathcal{X}\)</span> is <strong>invariant</strong> under <span class="math inline">\(T\)</span> if <span class="math inline">\(T^{-1}(\mathcal{B})=\mathcal{B}\)</span>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>A measure preserving transformation T on a probability space is <strong>ergodic</strong> if for every <span class="math inline">\(T\)</span>-invariant set <span class="math inline">\(\mathcal{B}\)</span> in <span class="math inline">\(\beta\)</span>, either <span class="math inline">\(\mu(\mathcal{B})=0\)</span> or <span class="math inline">\(\mu(\mathcal{B})=1\)</span>.</p>
+</blockquote>
+<p>In other words, the system is metrically indecomposable i.e: any invariant set is either negligible or occupies the whole space.</p>
+<p><strong>Example:</strong> Consider a rational rotation on the following set <span class="math inline">\(\mathcal{A}\)</span> in <span class="math inline">\(\mathbb{R}/\mathbb{Z}\)</span>. <span class="math display">\[
+\mathcal{A} = \bigcup_{i=0}^{q-1} \left[ \frac{i}{q},\frac{i}{q}+\frac{1}{2q}\right].
+\]</span> This set is invariant under <span class="math inline">\(R_\alpha\)</span> as it sends each interval in <span class="math inline">\(\mathcal{A}\)</span> into another one in <span class="math inline">\(\mathcal{A}\)</span> itself but the measure of this set lies between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>.</p>
+</section>
+<section id="the-birkhoffs-ergodic-theorem" class="level3">
+<h3 class="anchored" data-anchor-id="the-birkhoffs-ergodic-theorem">The Birkhoff’s Ergodic Theorem</h3>
+<blockquote class="blockquote">
+<p>Let <span class="math inline">\((\mathcal{X},\beta,\mu)\)</span> be a probability space and let <span class="math inline">\(T\)</span> be an ergodic measure-preserving transformation on <span class="math inline">\((\mathcal{X},\beta,\mu)\)</span>. If <span class="math inline">\(f: \mathcal{X} \to \mathbb{R}\)</span> is an integrable function, then for <span class="math inline">\(\mu\)</span>-a.e <span class="math inline">\(x \in \mathcal{X}\)</span> <span class="math display">\[
+\lim_{n \to \infty} \frac{1}{n} \sum_{i=0}^{n-1} f(T^i(x)) = \int f d\mu
+\]</span></p>
+</blockquote>
+</section>
+<section id="can-ergodicity-be-relaxed" class="level3">
+<h3 class="anchored" data-anchor-id="can-ergodicity-be-relaxed">Can ergodicity be relaxed?</h3>
+<p>The general version of the Birkhoff’s Ergodic theorem for when <span class="math inline">\(T\)</span> is not ergodic is looked at now.</p>
+<blockquote class="blockquote">
+<p>Let <span class="math inline">\((\mathcal{X},\beta,\mu)\)</span> be a probability space and let <span class="math inline">\(T\)</span> be a measure-preserving transformation on <span class="math inline">\((\mathcal{X},\beta,\mu)\)</span>. If <span class="math inline">\(f: \mathcal{X} \to \mathbb{R}\)</span> is an integrable function, then</p>
+</blockquote>
+<blockquote class="blockquote">
+<ol type="1">
+<li><span class="math inline">\(\lim_{n \to \infty} \frac{1}{n} \sum_{i=0}^{n-1} f(T^i(x))\)</span> exists for a.e <span class="math inline">\(x \in \mathcal{X}\)</span>. Denote this limit by <span class="math inline">\(\bar{f}(x)\)</span>.<br>
+</li>
+<li><span class="math inline">\(\bar{f}(Tx) = \bar{f}(x)\)</span> a.e.<br>
+</li>
+<li>For any measurable set <span class="math inline">\(\mathcal{A}\)</span> that is <span class="math inline">\(T\)</span>-invariant,<br>
+<span class="math display">\[\begin{equation*}
+\int_{\mathcal{A}} f d\mu = \int_{\mathcal{A}} \bar{f} d\mu.
+\end{equation*}\]</span></li>
+</ol>
+</blockquote>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

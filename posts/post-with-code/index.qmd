@@ -4,3 +4,45 @@ date: "2025-09-10"
 categories: [Analysis, Dynamics]
 ---
 
+### Introduction
+
+The ergodic theorem was proved in 1931, first by J. von Neumann in the case of $L^2$ convergence and then by D. Birkhoff in the much stronger case of pointwise convergence which solved the most fundamental question in statistical mechanics: when does the time average converges to the space average.
+
+### Ergodicity
+
+Ergodicity formalizes the idea of when a dynamical system cannot be broken down into smaller invariant pieces with positive measure. 
+
+> Let $T: \mathcal{X} \rightarrow \mathcal{X}$ be a transformation. A subset $\mathcal{B}$ of $\mathcal{X}$ is **invariant** under $T$ if $T^{-1}(\mathcal{B})=\mathcal{B}$.
+
+> A measure preserving transformation T on a probability space is **ergodic** if for every $T$-invariant set $\mathcal{B}$ in $\beta$, either $\mu(\mathcal{B})=0$ or $\mu(\mathcal{B})=1$. 
+
+In other words, the system is metrically indecomposable i.e: any invariant set is either negligible or occupies the whole space.
+
+**Example:** Consider a rational rotation on the following set $\mathcal{A}$ in $\mathbb{R}/\mathbb{Z}$. 
+$$
+\mathcal{A} = \bigcup_{i=0}^{q-1} \left[ \frac{i}{q},\frac{i}{q}+\frac{1}{2q}\right].
+$$
+This set is invariant under $R_\alpha$ as it sends each interval in $\mathcal{A}$ into another one in $\mathcal{A}$ itself but the measure of this set lies between $0$ and $1$.
+
+### The Birkhoff's Ergodic Theorem
+
+> Let $(\mathcal{X},\beta,\mu)$ be a probability space and let $T$ be an ergodic measure-preserving transformation on $(\mathcal{X},\beta,\mu)$. If $f: \mathcal{X} \to \mathbb{R}$ is an integrable function, then for $\mu$-a.e $x \in \mathcal{X}$
+> $$
+    \lim_{n \to \infty} \frac{1}{n} \sum_{i=0}^{n-1} f(T^i(x)) = \int f d\mu 
+  $$
+
+### Can ergodicity be relaxed?
+
+ The general version of the Birkhoff's Ergodic theorem for when $T$ is not ergodic is looked at now. 
+
+> Let $(\mathcal{X},\beta,\mu)$ be a probability space and let $T$ be a measure-preserving transformation on $(\mathcal{X},\beta,\mu)$. If $f: \mathcal{X} \to \mathbb{R}$ is an integrable function, then  
+
+> 1. $\lim_{n \to \infty} \frac{1}{n} \sum_{i=0}^{n-1} f(T^i(x))$ exists for a.e $x \in \mathcal{X}$. Denote this limit by $\bar{f}(x)$.  
+> 2. $\bar{f}(Tx) = \bar{f}(x)$ a.e.  
+> 3. For any measurable set $\mathcal{A}$ that is $T$-invariant,  
+>    \begin{equation*}
+        \int_{\mathcal{A}} f d\mu = \int_{\mathcal{A}} \bar{f} d\mu.
+    \end{equation*}
+
+
+

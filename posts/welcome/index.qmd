@@ -60,7 +60,7 @@ One nice property of positive definite kernels is that adding kernels, multiplyi
 
 So far we looked at kernels abstractly. Proposition 3 shows how positive definite kernels naturally arise from inner products in some vector space. This is the first step towards seeing kernels encoding hidden geometries.
 
-> **Proposition 3:** Let $V$ be a vector space with an inner product $\langle \cdot , \cdot \rangle$. If we have a map $\Phi : \mathcal{X} \to V; x \mapsto \Phi(x)$, a positive definite kernel on $\mathcal{X}$ is defined by $$k(x,y) = \langle \Phi(x), \Phi(y) \rangle.$$
+> **Proposition 3:** Let $\mathcal{V}$ be a vector space with an inner product $\langle \cdot , \cdot \rangle$. If we have a map $\Phi : \mathcal{X} \to \mathcal{V}; x \mapsto \Phi(x)$, a positive definite kernel on $\mathcal{X}$ is defined by $$k(x,y) = \langle \Phi(x), \Phi(y) \rangle.$$
 
 > Proof: Let $x_1, \ldots, x_n$ in $\mathcal{X}$ and $c_1, \ldots, c_n \in \mathbb{C}$.
 > $$
