@@ -40,7 +40,7 @@ website:
 
 format:
   html:
-    theme: sketchy
+    theme: lux
     css: styles.css
     
     
