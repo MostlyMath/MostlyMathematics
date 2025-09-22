@@ -83,7 +83,7 @@ $$
 \sum_{i,j=1}^n d_i \overline{d_j} k(x_i, x_j) \geq 0
 $$
 
-Now that we know how to construct positive definite kernels, let us see some concrete examples.
+Now that we know how to construct positive definite kernels, let us look at some real-valued positive definite kernels on $\mathbb{R}^n$.
 
 ### Examples
 
