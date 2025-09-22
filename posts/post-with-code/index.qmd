@@ -11,17 +11,17 @@ nocite: |
 
 ### Introduction
 
-The ergodic theorem was proved in 1931, first by J. von Neumann in the case of ${\mathcal{L}}^2$ convergence and then by D. Birkhoff in the much stronger case of pointwise convergence which solved the most fundamental question in statistical mechanics: when does the time average converges to the space average? Before getting into this let us think about what [Poincaré Recurrence](\posts\my-first-post) gave us:
+The ergodic theorem was proved in 1931, first by John von Neumann in the case of ${\mathcal{L}}^2$ convergence and then by Birkhoff in the much stronger case of pointwise convergence which solved the most fundamental question in statistical mechanics: when does the time average converge to the space average? Before getting into this let us think about what [Poincaré Recurrence](\posts\my-first-post) gave us:
 
 > Let $T : \mathcal{X} \to \mathcal{X}$ be a measure-preserving transformation of a probability space $(\mathcal{X}, \beta, \mu)$. Let $\mathcal{E} \in \beta$ with $m(\mathcal{E}) > 0$. Then almost all points of $\mathcal{E}$ return infinitely often to $\mathcal{E}$ under positive iteration by $T$ (i.e., there exists $\mathcal{F} \subseteq \mathcal{E}$ with $m(\mathcal{F}) = m(\mathcal{E})$ such that for each $x \in \mathcal{F}$ there is a sequence $n_1 < n_2 < n_3 < \cdots$ of natural numbers with $T^{n_i}(x) \in \mathcal{F}$ for each $i$).
 
-So what we have is a measure preserving system, then we can take a measurable set $\mathcal{E}$ with a point $x \in \mathcal{E}$ which returns infinitely often to $\mathcal{E}$. Poincaré Recurrence guarantees the existence of such a point. What we want to find now is in some sense: the frequency of the occurence of the points of the orbit of $x$ in $\mathcal{E}$. 
+So, if we have a measure preserving system, then we can take a measurable set $\mathcal{E}$ with a point $x \in \mathcal{E}$ which returns infinitely often to $\mathcal{E}$. Poincaré Recurrence guarantees the existence of such a point. What we want to find now is in some sense: the frequency of the occurence of the points of the orbit of $x$ in $\mathcal{E}$. 
 
 Let $\mathcal{O}(x) = \{ x, T(x), T^2(x), \dots \}$ be the orbit of $x \in \mathcal{E}$. Let $\mathcal{O}_N(x) := \{ x, \dots , T^{N-1}(x) \}$
 
-What we want to find is the frequency of the number of points of $\mathcal{O}_N(x)$ that are also in $E$ which can be represented as follows:
+The frequency of the number of points of $\mathcal{O}_N(x)$ that are also in $E$ can be represented as follows:
 $$ \frac{1}{N} \sum_{i=0}^{N-1} X_E(T^i(x)), $$
-where $X_E$ is the characteristic function of $E$. Now we could wonder what would happen if $N$ keeps increasing. Consider the following limit:
+where $X_E$ is the characteristic function of $E$. Now what would happen if $N$ keeps increasing? Consider the following limit:
 $$ \lim_{N \to \infty} \frac{1}{N} \sum_{i=0}^{N-1} X_E(T^i(x)) $$
 Some questions we may have are: Will such a limit exist in the first place? Under what condidtions can such a limit exist? Incase it does, what can it possibly converge to? 
 
@@ -39,13 +39,13 @@ Note that $T$ need not be invertible here. $T^{-1}(\mathcal{B})$ just refers to 
 
 > A measure preserving transformation T on a probability space is **ergodic** if for every $T$-invariant set $\mathcal{B}$ in $\beta$, either $\mu(\mathcal{B})=0$ or $\mu(\mathcal{B})=1$. 
 
-In other words, the system is metrically indecomposable i.e: any invariant set is either negligible or occupies the whole space.
+In other words, the system is measure-theoretically indecomposable i.e: any invariant set is either negligible or occupies the whole space.
 
 **Example:** Consider a rational rotation on the following set $\mathcal{A}$ in $\mathbb{R}/\mathbb{Z}$. 
 $$
 \mathcal{A} = \bigcup_{i=0}^{q-1} \left[ \frac{i}{q},\frac{i}{q}+\frac{1}{2q}\right].
 $$
-This set is invariant under $R_\alpha$ as it sends each interval in $\mathcal{A}$ into another one in $\mathcal{A}$ itself but the measure of this set lies between $0$ and $1$ making it non-ergodic. Turns out irrational rotations are ergodic which we will probably look into in another post (along with more consequences of ergodicity).
+This set is invariant under $R_\alpha$ as it sends each interval in $\mathcal{A}$ into another one in $\mathcal{A}$ itself but the measure of this set lies between $0$ and $1$ making it non-ergodic. Turns out, irrational rotations are ergodic which we will probably look into in another post (along with more consequences of ergodicity).
 
 We are now ready to state the Birkhoff's ergodic theorem. Note that we restrict ourselves to a probability space since any finite measure space can be normalized accordingly.
 
@@ -58,7 +58,7 @@ We are now ready to state the Birkhoff's ergodic theorem. Note that we restrict 
 
 ### Can ergodicity be relaxed?
 
-Now we wonder what happens if we do not have an ergodic system. Turns out, in the case of measure-preserving systems, the time average does converge, not to the space average, but to a $T$-invariant function as stated below and we can also very easily find the integral of this limit function.
+Now, what happens if we do not have an ergodic system? Turns out, in the case of measure-preserving systems, the time average does converge, not to the space average, but to a $T$-invariant function as stated below and we can also very easily find the integral of this limit function.
 
 > Let $(\mathcal{X},\beta,\mu)$ be a probability space and let $T$ be a measure-preserving transformation on $(\mathcal{X},\beta,\mu)$. If $f: \mathcal{X} \to \mathbb{R}$ is an integrable function, then  
 
