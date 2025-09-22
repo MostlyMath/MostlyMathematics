@@ -63,7 +63,7 @@ So far, we’ve seen the following two things:
 
 - Every RKHS has a reproducing kernel which turns out to be positive definite.
 
-- Evaluation functionals being continuous is exactly what makes this setup work.
+- continuous evaluation functionals characterizing RKHS
 
 The natural question now is: given just a positive definite kernel, can we always build the "corresponding" Hilbert space in some sense.
 
