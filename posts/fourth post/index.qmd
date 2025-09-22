@@ -76,7 +76,7 @@ Turns out, every positive definite kernel corresponds to a unique RKHS. In other
 
 Theorem 3 is the big result we were aiming for: every positive definite kernel actually generates a unique RKHS. This shows that kernels are not just abstract objects and that they encode entire function spaces with nice geometric properties. In the next post, we will probably dive into the proof and see exactly how this Hilbert space is constructed from the kernel. We will also look at some concrete examples of RKHS and explicitly write their reproducing kernels.
 
-### References
+
 
 ::: {.comment-section}
 <!-- Giscus comments widget -->
