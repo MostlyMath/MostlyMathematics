@@ -61,7 +61,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-b779bb1d4b83dbd8e3e2ca355638bf48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-96c1bb8b336142dcc39f931773fab1b9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -259,7 +259,7 @@ window.Quarto = {
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
 <p>This post is Part I of the series on reproducing kernel Hilbert spaces (RKHS). In functional analysis and related areas, we often encounter functions that speak of the relationships between points in a space (a metric or a distance function for instance). A kernel is such a function, taking two inputs and returning a real or a complex number, which can be interpreted as a measure of similarity or interaction.</p>
-<p>Amongst these kernels, a special class called positive definite kernels play a central role as they are characterized by an intrinsic property that guarantees the existence of an associated Hilbert space of functions (a reproducing kernel Hilbert space which we will look into in the next post).</p>
+<p>Amongst these kernels, a special class called positive definite kernels play a central role as they are characterized by an intrinsic property that guarantees the existence of an associated <a href="https://en.wikipedia.org/wiki/Hilbert_space">Hilbert space</a> of functions (a reproducing kernel Hilbert space which we will look into in the next post).</p>
 <p>Positive definite kernels are not just abstract objects, they also provide the foundation for constructing function spaces, understanding linear operators, and formulating problems in approximation theory and analysis. In this post, we will define positive definite kernels, explore some properties, and look into some examples.</p>
 </section>
 <section id="positive-definite-kernels" class="level3">
@@ -273,7 +273,7 @@ window.Quarto = {
 k(x_1, x_1) &amp; \cdots &amp; k(x_1, x_n) \\
 \vdots &amp; \ddots &amp; \vdots \\
 k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
-\end{pmatrix}\)</span> is positive semidefinite.</p>
+\end{pmatrix}\)</span> is <a href="https://en.wikipedia.org/wiki/Definite_matrix">positive semidefinite</a>.</p>
 </blockquote>
 <p>So basically, positive definite kernels are those functions whose weighted combinations over any finite set of points are always non-negative. Note that the symmetric matrix <span class="math inline">\((k(x_i, x_j))_{i,j=1}^{n}\)</span> is often called a <strong>Gram matrix</strong>.</p>
 <p>In the complex-valued case, the Hermitian property <span class="math inline">\(k(y,x) = \overline{k(x,y)}\)</span> is derived from the positive-definiteness itself.</p>

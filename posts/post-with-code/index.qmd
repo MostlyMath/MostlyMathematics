@@ -15,7 +15,7 @@ The ergodic theorem was proved in 1931, first by John von Neumann in the case of
 
 > Let $T : \mathcal{X} \to \mathcal{X}$ be a measure-preserving transformation of a probability space $(\mathcal{X}, \beta, \mu)$. Let $\mathcal{E} \in \beta$ with $m(\mathcal{E}) > 0$. Then almost all points of $\mathcal{E}$ return infinitely often to $\mathcal{E}$ under positive iteration by $T$ (i.e., there exists $\mathcal{F} \subseteq \mathcal{E}$ with $m(\mathcal{F}) = m(\mathcal{E})$ such that for each $x \in \mathcal{F}$ there is a sequence $n_1 < n_2 < n_3 < \cdots$ of natural numbers with $T^{n_i}(x) \in \mathcal{F}$ for each $i$).
 
-So, if we have a measure preserving system, then we can take a measurable set $\mathcal{E}$ with a point $x \in \mathcal{E}$ which returns infinitely often to $\mathcal{E}$. Poincaré Recurrence guarantees the existence of such a point. What we want to find now is in some sense: the frequency of the occurence of the points of the orbit of $x$ in $\mathcal{E}$. 
+So, if we have a [measure preserving system](\posts\my-first-post\#measure-preserving-systems), then we can take a measurable set $\mathcal{E}$ with a point $x \in \mathcal{E}$ which returns infinitely often to $\mathcal{E}$. Poincaré Recurrence guarantees the existence of such a point. What we want to find now is in some sense: the frequency of the occurence of the points of the orbit of $x$ in $\mathcal{E}$. 
 
 Let $\mathcal{O}(x) = \{ x, T(x), T^2(x), \dots \}$ be the orbit of $x \in \mathcal{E}$. Let $\mathcal{O}_N(x) := \{ x, \dots , T^{N-1}(x) \}$
 

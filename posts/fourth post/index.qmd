@@ -50,7 +50,7 @@ Also note that $\|k(\cdot, x)\| = \sqrt{k(x, x)}$ since $\|k(\cdot, x)\|^2 = \la
 
 At this point we might wonder why we care about this reproducing property and what it has to do with evaluation at a point. The key is that evaluation should be a nice operation. Like we noted before, in some Hilbert spaces of functions (like ${\mathcal{L}}^2$), evaluation doesn’t even make sense as two different-looking functions might represent the same element of the space making $f(x)$ ambiguous.
 
-To avoid this, we require that the evaluation map $e_x(f) = f(x)$ to be a continuous linear functional for every point $x$. Once this condition holds, the Riesz representation theorem guarantees the existence of the kernel elements $k_x$ and the reproducing property follows naturally. In fact, the continuity of evaluation functions characterizes RKHS.
+To avoid this, we require that the evaluation map $e_x(f) = f(x)$ to be a continuous linear functional for every point $x$. Once this condition holds, the [Riesz representation theorem](https://en.wikipedia.org/wiki/Riesz_representation_theorem) guarantees the existence of the kernel elements $k_x$ and the reproducing property follows naturally. In fact, the continuity of evaluation functions characterizes RKHS.
 
 > Proposition 2: Let $\mathcal{H}$ be a Hilbert space consisting of functions on a set $\mathcal{X}$. Then $\mathcal{H}$ is a RKHS iff the evaluation map $e_x : \mathcal{H} \rightarrow \mathbb{F}, e_x(f) = f(x)$, is a continuous linear functional for each $x \in \mathcal{X}$.
 

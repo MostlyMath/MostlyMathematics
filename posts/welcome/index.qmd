@@ -13,7 +13,7 @@ nocite: |
 
 This post is Part I of the series on reproducing kernel Hilbert spaces (RKHS). In functional analysis and related areas, we often encounter functions that speak of the relationships between points in a space (a metric or a distance function for instance). A kernel is such a function, taking two inputs and returning a real or a complex number, which can be interpreted as a measure of similarity or interaction.
 
-Amongst these kernels, a special class called positive definite kernels play a central role as they are characterized by an intrinsic property that guarantees the existence of an associated Hilbert space of functions (a reproducing kernel Hilbert space which we will look into in the next post).
+Amongst these kernels, a special class called positive definite kernels play a central role as they are characterized by an intrinsic property that guarantees the existence of an associated [Hilbert space](https://en.wikipedia.org/wiki/Hilbert_space) of functions (a reproducing kernel Hilbert space which we will look into in the next post).
 
 Positive definite kernels are not just abstract objects, they also provide the foundation for constructing function spaces, understanding linear operators, and formulating problems in approximation theory and analysis. In this post, we will define positive definite kernels, explore some properties, and look into some examples.
 
@@ -28,7 +28,7 @@ k(x_1, x_1) & \cdots & k(x_1, x_n) \\
 \vdots & \ddots & \vdots \\
 k(x_n, x_1) & \cdots & k(x_n, x_n)
 \end{pmatrix}$
-is positive semidefinite.
+is [positive semidefinite](https://en.wikipedia.org/wiki/Definite_matrix).
 
 So basically, positive definite kernels are those functions whose weighted combinations over any finite set of points are always non-negative. Note that the symmetric matrix $(k(x_i, x_j))_{i,j=1}^{n}$ is often called a **Gram matrix**.
 

@@ -32,7 +32,7 @@ So a nice thing to wonder would be if **coming back close to where we started** 
 
 To even begin answering this, we need some extra structure. Just having a set $\mathcal{X}$ and a map $T$ is too vague. What we want is a way to say something like: “most points behave this way.” And the right tool for that is **measure theory**.  
 
-If we give our space a measure (so we can talk about sizes of sets, probabilities, and so on), and if our transformation $T$ respects that measure, we might be able to answer our question. And hence we consider the setting of a **measure-preserving system**.  
+If we give our space a [measure](https://en.wikipedia.org/wiki/Measure_space) (so we can talk about sizes of sets, probabilities, and so on), and if our transformation $T$ respects that measure, we might be able to answer our question. And hence we consider the setting of a **measure-preserving system**.  
 
 And in this setting we have a deep and beautiful result: the **Poincaré Recurrence Theorem**, which tells us something quite striking about orbits. But before we get there, let’s first understand what measure-preserving systems actually are.  
 
@@ -44,7 +44,7 @@ And in this setting we have a deep and beautiful result: the **Poincaré Recurre
 > Let $(\mathcal{X}, \beta, \mu)$ be a measure space. A transformation $T: \mathcal{X} \to \mathcal{X}$ is **measure-preserving** if $T$ is measurable and if  $\mu(T^{-1}(\mathcal{B})) = \mu(\mathcal{B})$ for all $\mathcal{B} \in \beta.$
 
 
-A measure-preserving transformation just rearranges the space without changing sizes of sets (like shuffling cards for instance: positions change, but nothing is lost or gained). We use $T^{-1}$ in the definition because preimages are always measurable (images need not be), and they correctly account for all points mapping into a set, even if $T$ is not one-to-one (for instance the doubling map on a circle). Check that rotating the circle just shifts arcs around without changing their length, so the Lebesgue measure is preserved making it a measure preserving transformation.
+A measure-preserving transformation just rearranges the space without changing sizes of sets (like shuffling cards for instance: positions change, but nothing is lost or gained). We use $T^{-1}$ in the definition because preimages are always measurable (images need not be), and they correctly account for all points mapping into a set, even if $T$ is not one-to-one (for instance the [doubling map](https://en.wikipedia.org/wiki/Dyadic_transformation) on a circle). Check that rotating the circle just shifts arcs around without changing their length, so the [Lebesgue measure](https://en.wikipedia.org/wiki/Lebesgue_measure) is preserved making it a measure preserving transformation.
     
 ### Poincaré's Recurrence Theorem
 
