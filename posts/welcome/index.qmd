@@ -106,3 +106,21 @@ On a concluding note, we saw the definition of a positive definite kernel and th
 
 ### References
 
+::: {.comment-section}
+<!-- Giscus comments widget -->
+<script src="https://giscus.app/client.js"
+        data-repo="MostlyMath/MostlyMathematics"
+        data-repo-id="R_kgDOPrVY4w"
+        data-category="Comments"
+        data-category-id="DIC_kwDOPrVY484CvwcT"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+:::
