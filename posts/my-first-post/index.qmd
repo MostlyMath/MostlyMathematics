@@ -74,7 +74,7 @@ Note that the theorem crucially needs two assumptions:
 
 So we obtain recurrence (the exact answer we were looking for) by combining **finite measures** with **measure preservation**.
 
-## References 
+
 
 ::: {.comment-section}
 <!-- Giscus comments widget -->

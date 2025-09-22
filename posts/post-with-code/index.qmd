@@ -11,7 +11,7 @@ nocite: |
 
 ### Introduction
 
-The ergodic theorem was proved in 1931, first by John von Neumann in the case of ${\mathcal{L}}^2$ convergence and then by Birkhoff in the much stronger case of pointwise convergence which solved the most fundamental question in statistical mechanics: when does the time average converge to the space average? Before getting into this let us think about what [Poincaré Recurrence](\posts\my-first-post) gave us:
+The ergodic theorem was proved in 1931, first by John von Neumann in the case of ${\mathcal{L}}^2$ convergence and then by Birkhoff in the much stronger case of pointwise convergence which solved the most fundamental question in statistical mechanics: when does the time average converge to the space average? Before getting into this let us think about what [Poincaré Recurrence](\posts\my-first-post\#poincaré’s-recurrence-theorem) gave us:
 
 > Let $T : \mathcal{X} \to \mathcal{X}$ be a measure-preserving transformation of a probability space $(\mathcal{X}, \beta, \mu)$. Let $\mathcal{E} \in \beta$ with $m(\mathcal{E}) > 0$. Then almost all points of $\mathcal{E}$ return infinitely often to $\mathcal{E}$ under positive iteration by $T$ (i.e., there exists $\mathcal{F} \subseteq \mathcal{E}$ with $m(\mathcal{F}) = m(\mathcal{E})$ such that for each $x \in \mathcal{F}$ there is a sequence $n_1 < n_2 < n_3 < \cdots$ of natural numbers with $T^{n_i}(x) \in \mathcal{F}$ for each $i$).
 
