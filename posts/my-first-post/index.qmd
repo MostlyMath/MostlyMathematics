@@ -58,7 +58,7 @@ The proof to this theorem is extremely simple and uses foundational measure theo
 Suppose we have a set $\mathcal{E}$ with $(m(\mathcal{E}) > 0)$. Imagine, for contradiction, that there is some subset $\mathcal{A} \subseteq \mathcal{E}$ (with positive measure) whose points never come back to $E$ once they leave.  
 
 Now look at the sets:
-$\mathcal{A}, T(\mathcal{A}), T^2(\mathcal{A}), T^3(\mathcal{A}), \dots$
+$\mathcal{A}, T^{-1}(\mathcal{A}), T^{-2}(\mathcal{A}), T^{-3}(\mathcal{A}), \dots$
 These sets can’t overlap, because if they did, some point of $\mathcal{A}$ would eventually land back in $E$, which we assumed never happens.  
 
 But here’s the catch: since $T$ preserves measure, all these sets have the same positive measure as $\mathcal{A}$. So we’ve built infinitely many disjoint sets, each of positive measure, sitting inside a probability space of total measure $1$. That’s impossible.  
