@@ -74,8 +74,7 @@ Turns out, every positive definite kernel corresponds to a unique RKHS. In other
   > 2. Span $\{k(\cdot, x) \mid x \in \mathcal{X}\}$ is dense in $\mathcal{H}_k$,  
   > 3. $k$ is a reproducing kernel on $\mathcal{H}_k$, i.e. $\langle f, k(\cdot, x) \rangle_{\mathcal{H}_k} = f(x),$ for all x \in \mathcal{X} and $f \in \mathcal{H}_k.$
 
-Theorem 3 is the big result we were aiming for: every positive definite kernel actually generates a unique RKHS. This shows that kernels are not just abstract objects and that they encode entire function spaces with nice geometric properties. In the next post, we will probably dive into the proof and see exactly how this Hilbert space is constructed from the kernel. We will also look at some concrete examples of RKHS and explicitly write their reproducing kernels.
-
+Theorem 3 is the main result we were aiming for: every positive definite kernel actually generates a unique RKHS. This shows that kernels are not just abstract objects and that they encode entire function spaces with nice geometric properties. In the next post, we will probably dive into the proof and see exactly how this Hilbert space is constructed from the kernel. We will also look at some concrete examples of RKHS and explicitly write their reproducing kernels.
 
 
 ::: {.comment-section}

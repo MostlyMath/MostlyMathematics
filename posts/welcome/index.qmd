@@ -104,7 +104,6 @@ $$
 
 On a concluding note, we saw the definition of a positive definite kernel and the ways to construct more such kernels which led to some examples. Our goal is to understand how positive definite kernels behave like inner products once you embed points into the appropriate Hilbert space which we will look into in the next post. 
 
-### References
 
 ::: {.comment-section}
 <!-- Giscus comments widget -->

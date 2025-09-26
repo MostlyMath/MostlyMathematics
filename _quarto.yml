@@ -30,6 +30,8 @@ website:
             href: categories/linear_algebra.qmd
           - text: Probability
             href: categories/probability.qmd
+          - text: Ergodic Theory
+            href: categories/ergodic_theory.qmd
   sidebar:
     style: "docked"
     contents: auto

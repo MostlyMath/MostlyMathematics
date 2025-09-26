@@ -1,0 +1,84 @@
+---
+title: Dynamics of irrational rotations
+date: 2025-09-26
+categories: [Analysis,Dynamics, Ergodic Theory]
+bibliography: ../../references.bib
+nocite: |
+ @silva2008
+ @walters1982
+ @hasselblatt-2003
+ @jordan-2016
+---
+
+### Introduction
+
+We briefly looked at rotations on a circle as examples in [Poincaré Recurrence](\posts\my-first-post) and [The Birkhoff's Ergodic Theorem](\posts\post-with-code). We will properly define rotations on a circle and look at a dichotomy for rotations first and then look at some dynamic properties of the same.
+
+In multiplicative notation we represent the circle as the unit circle in the complex plane 
+$$
+S^1=\{z \in \mathbb{C}: |z|=1\} = \{e^{2\pi i \varphi} :\varphi \in \mathbb{R}\}
+$$
+and in additive notation we have: $S^1= \mathbb{R}/\mathbb{Z}$. The map $e^{2\pi i \varphi} \mapsto \varphi$ establishes an isomorphism between these two representations. We denote by $R_\alpha$, the rotation by angle $2\pi \alpha$. In multiplicative notation we write, $R_\alpha(z)=e^{2\pi i \alpha}(z)$. While in additive notation we have, $R_\alpha(x)=(x+\alpha)\mod 1$. Here by (mod $1$), we mean that numbers whose differences are integers are identified. 
+
+Now we aim to study the orbit of a point $x \in \mathbb{R}/\mathbb{Z}$ under the map $R_{\alpha}$ Note that, the iterates of the rotation by $\alpha$ are 
+$$
+R_\alpha^n(z)=e^{2 \pi n \alpha}(z)\] or \[R_\alpha^n(x) = (x + n\alpha) \mod 1
+$$
+
+We will prove that $\alpha$ dichotomizes rotations based on it being a rational or an irrational number. 
+
+### Dichotomy for rotations
+
+> **Theorem 1:** Let $R_\alpha: \mathbb{R}\setminus\mathbb{Z} \rightarrow \mathbb{R}\setminus\mathbb{Z}$ be a rotation of the circle.  
+> 1. If $\alpha = p/q$ is rational with $p,q \in \mathbb{Z}$, all orbits are periodic of period $q$.  
+> 2. If $\alpha$ is irrational, the rotation $R_\alpha$ is minimal i.e: the orbit of every point $x \in \mathbb{R}\setminus\mathbb{Z}$ is dense in $\mathbb{R}\setminus\mathbb{Z}$.
+
+> **Proof:**  To prove (1), consider the additive notation for $R_\alpha$. Let $\alpha =p/q$ with $p,q \in \mathbb{Z}$. Then for each $x \in \mathbb{R}/\mathbb{Z}$, $$ R_\alpha^q(x)= x + q\frac{p}{q}\text{ (mod 1)} = x+ p\text{ (mod 1)} = x. $$ Thus every point is periodic of period $q$.  
+> To prove (2), If $\alpha$ is irrational, the orbit of any $x \in \mathbb{R}\setminus\mathbb{Z}$ is infinite and consists of distinct points. Given $\varepsilon>0$, choose $N$ so that $1/N<\varepsilon$. Among the first $N+1$ orbit points, two must lie within distance $<1/N$, so some iterate $R_\alpha^m$ is within $\varepsilon$ distance from $R_\alpha^n$. Then we go on to prove that the orbit under $R_\alpha$ contains points spaced by arcs of length lesser than $\varepsilon$, showing that for any $y \in \mathbb{R}\setminus\mathbb{Z}$ some iterate of $x$ lies within $\varepsilon$ of $y$, making the orbit of $x$ dense.
+
+The complete proof can be found in the references.
+
+### Ergodicity 
+
+We have already seen the definition of [Ergodicity](\posts\post-with-code), where the system is measure-theoretically indecomposable. Let us requote it here:
+
+> A measure preserving transformation T on a probability space is **ergodic** if for every $T$-invariant set $\mathcal{B}$ in $\beta$ (i.e: sets $\mathcal{B} \in \beta$ such that $T^{-1}(\mathcal{B})=\mathcal{B}$), either $\mu(\mathcal{B})=0$ or $\mu(\mathcal{B})=1$. 
+
+We have also seen that rational rotations are not ergodic. Turns out that irrational rotations are in fact ergodic but to prove it, directly checking invariant sets can get cumbersome. A convenient way of doing this is by looking at invariant functions instead. Functions can be thought of as observables on the system. If some observable does not change over time, it must reflect a hidden symmetry. Ergodicity should mean that no such nontrivial symmetry exists which motivates our next lemma, which is a characterization for ergodicity. We first look at what an invariant function is:
+
+> Let $T: \mathcal{X} \rightarrow \mathcal{X}$ be a transformation. Any measurable function $f: \mathcal{X} \rightarrow \mathbb{R}$ is **invariant under $T$** or **$T$-invariant** if $foT = f$ $\mu$-a.e. i.e: $f(T(x))=f(x)$ for $\mu$-a.e $x \in \mathcal{X}$.
+
+Now we have the following characterization for ergodicity. 
+
+> **Lemma 2:**  A measure-preserving transformation $T: \mathcal{X} \rightarrow \mathcal{X}$ is ergodic iff for any $f \in L^2(\mathcal{X},\beta,\mu)$ that is $T$-invariant, we have that $f$ is $\mu$-a.e constant.
+
+This lemma tells us that ergodicity is equivalent to saying that the only observables that remain unchanged under the given transformation are the trivial, constant ones.
+
+Note that we can obtain a similar characteriztion if $f \in L^p(\mathcal{X},\beta,\mu)$ and for any $p \geq 1$.
+
+Fourier series can elegantly be used along with the above characterization to show that certain maps are ergodic.
+
+> **Theorem 3:** Irrational rotations on $\mathbb{R}/\mathbb{Z}$ are ergodic.  
+
+> **Proof:** Our goal is to prove that for a given $f \in L^2(\mu)$, if $f \circ R_\alpha = f$ almost everywhere, then it is constant almost everywhere. Then this is equivalent to the ergodicity of $R_\alpha$. Since $f \in L^2(\mathbb{R}/\mathbb{Z}, \mathcal{B}, \lambda)$, $f$ is equal in $L^2$ to its Fourier series. $$ \sum_{n=-\infty}^{+\infty} c_n e^{2\pi i n x}, \quad \text{where} \quad c_n = \int f(x)e^{-2\pi i n x} \, dx, \quad n \in \mathbb{Z}.$$ The Fourier series for $f \circ R_\alpha$ is $$ \sum_{n=-\infty}^{+\infty} c_n e^{2\pi i n (x+\alpha)} = \sum_{n=-\infty}^{+\infty} c_n e^{2\pi i n \alpha} e^{2\pi i n x}. $$ Since $f = f \circ R_\alpha$ almost everywhere, $f = f \circ R_\alpha$ in $L^2$ and so both Fourier series must be the same. Thus, by uniqueness of the Fourier coefficients, it will be that $$ c_n = c_n e^{2\pi i n \alpha} \quad \Leftrightarrow \quad c_n (1 - e^{2\pi i n \alpha}) = 0 \quad \text{for all } n \in \mathbb{Z}. $$ If $(1 - e^{2\pi i n \alpha}) \neq 0$, we will have that $c_n = 0$. Since $\alpha$ is irrational, all orbits of $R_\alpha$ are infinite and distinct so in particular the orbit $R_\alpha^n(0) = n\alpha \mod 1$ consists of distinct points. Hence if  $n \alpha \mod 1 \neq 0$ for all $n \neq 0$ we have that $(1 - e^{2\pi i n \alpha}) \neq 0$, which in turn implies that $c_n = 0.$ Thus all Fourier coefficients are zero apart from possibly $c_0$ and $f = c_0$ is constant. 
+  
+To conclude, we have a clear dichotomy: rational rotations leading to periodic and non-ergodic transformations, while irrational rotations leading to dense orbits and ergodic transformations. We will use these results along with the [Birhoff's Ergodic theorem](\posts\post-with-code) to obtain an answer to the very interesting Gelfand's question.
+
+::: {.comment-section}
+<!-- Giscus comments widget -->
+<script src="https://giscus.app/client.js"
+        data-repo="MostlyMath/MostlyMathematics"
+        data-repo-id="R_kgDOPrVY4w"
+        data-category="Comments"
+        data-category-id="DIC_kwDOPrVY484CvwcT"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+:::

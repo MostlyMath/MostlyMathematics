@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-15">
+<meta name="dcterms.date" content="2025-09-26">
 
-<title>Positive Definite Kernels – Mostly Mathematics</title>
+<title>Dynamics of irrational rotations – Mostly Mathematics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -161,7 +161,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fifth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/welcome/index.html">Positive Definite Kernels</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fifth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/fifth post/index.html">Dynamics of irrational rotations</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -170,10 +170,12 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fifth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/welcome/index.html">Positive Definite Kernels</a></li></ol></nav>
-      <h1 class="title">Positive Definite Kernels</h1>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fifth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/fifth post/index.html">Dynamics of irrational rotations</a></li></ol></nav>
+      <h1 class="title">Dynamics of irrational rotations</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Analysis</div>
+                <div class="quarto-category">Dynamics</div>
+                <div class="quarto-category">Ergodic Theory</div>
               </div>
                   </div>
   </div>
@@ -185,7 +187,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 15, 2025</p>
+        <p class="date">September 26, 2025</p>
       </div>
     </div>
     
@@ -219,7 +221,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/fifth post/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/fifth post/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Dynamics of irrational rotations</span></a>
   </div>
 </li>
@@ -243,7 +245,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/welcome/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/welcome/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Positive Definite Kernels</span></a>
   </div>
 </li>
@@ -264,88 +266,52 @@ window.Quarto = {
 
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>This post is Part I of the series on reproducing kernel Hilbert spaces (RKHS). In functional analysis and related areas, we often encounter functions that speak of the relationships between points in a space (a metric or a distance function for instance). A kernel is such a function, taking two inputs and returning a real or a complex number, which can be interpreted as a measure of similarity or interaction.</p>
-<p>Amongst these kernels, a special class called positive definite kernels play a central role as they are characterized by an intrinsic property that guarantees the existence of an associated <a href="https://en.wikipedia.org/wiki/Hilbert_space">Hilbert space</a> of functions (a reproducing kernel Hilbert space which we will look into in the next post).</p>
-<p>Positive definite kernels are not just abstract objects, they also provide the foundation for constructing function spaces, understanding linear operators, and formulating problems in approximation theory and analysis. In this post, we will define positive definite kernels, explore some properties, and look into some examples.</p>
-</section>
-<section id="positive-definite-kernels" class="level3">
-<h3 class="anchored" data-anchor-id="positive-definite-kernels">Positive Definite Kernels</h3>
-<p>Let us look at positive definite kernels in the real-valued case first.</p>
-<blockquote class="blockquote">
-<p>Let <span class="math inline">\(\mathcal{X}\)</span> be a set. <span class="math inline">\(k: \mathcal{X} \times \mathcal{X} \to \mathbb{R}\)</span> is a <strong>positive definite kernel</strong> if <span class="math inline">\(k(x,y) = k(y,x)\)</span> and for every <span class="math inline">\(x_1, \dots, x_n \in \mathcal{X}\)</span> and <span class="math inline">\(c_1, \dots, c_n \in \mathbb{R}\)</span> we have that <span class="math display">\[\sum_{i,j=1}^{n} c_i c_j k(x_i, x_j) \ge 0,\]</span> i.e.&nbsp;the symmetric matrix:</p>
-</blockquote>
-<blockquote class="blockquote">
-<p><span class="math inline">\((k(x_i, x_j))_{i,j=1}^{n} = \begin{pmatrix}
-k(x_1, x_1) &amp; \cdots &amp; k(x_1, x_n) \\
-\vdots &amp; \ddots &amp; \vdots \\
-k(x_n, x_1) &amp; \cdots &amp; k(x_n, x_n)
-\end{pmatrix}\)</span> is <a href="https://en.wikipedia.org/wiki/Definite_matrix">positive semidefinite</a>.</p>
-</blockquote>
-<p>So basically, positive definite kernels are those functions whose weighted combinations over any finite set of points are always non-negative. Note that the symmetric matrix <span class="math inline">\((k(x_i, x_j))_{i,j=1}^{n}\)</span> is often called a <strong>Gram matrix</strong>.</p>
-<p>In the complex-valued case, the Hermitian property <span class="math inline">\(k(y,x) = \overline{k(x,y)}\)</span> is derived from the positive-definiteness itself.</p>
-<blockquote class="blockquote">
-<p>Let <span class="math inline">\(\mathcal{X}\)</span> be a set. <span class="math inline">\(k : \mathcal{X} \times \mathcal{X} \to \mathbb{C}\)</span> is a <strong>positive definite kernel</strong> if for every <span class="math inline">\(x_1, \dots, x_n \in \mathcal{X}\)</span> and <span class="math inline">\(c_1, \dots, c_n \in \mathbb{C}\)</span>, we have that <span class="math display">\[\sum_{i,j=1}^{n} c_i \overline{c_j} k(x_i, x_j) \ge 0.\]</span></p>
-</blockquote>
-<p>Before looking into some examples of positive definite kernels, we will look into some properties of the same and try to construct new positive definite kernels from the existing ones.</p>
-<blockquote class="blockquote">
-<p><strong>Proposition 1:</strong> Assume <span class="math inline">\(k : \mathcal{X} \times \mathcal{X} \to \mathbb{C}\)</span> is positive definite. Then, for any <span class="math inline">\(x, y \in \mathcal{X}\)</span>,<br>
-1. <span class="math inline">\(k(x,x) \geq 0\)</span>.<br>
-2. <span class="math inline">\(\lvert k(x,y) \rvert^2 \leq k(x,x) k(y,y)\)</span>.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Proof: (1) is obvious from the definition (take <span class="math inline">\(n=1, c_1 = 1, x_1 = x\)</span>). For (2) since a hermitian matrix is positive semidefinite iff all its eigenvalues are non-negative (Check!), the determinant must be non-negative which gives us this inequality.</p>
-</blockquote>
-<p>From Proposition 1 we get the hints of structure hidden in positive definite kernels. The non-negativity of <span class="math inline">\(k(x,x)\)</span> and the Cauchy-Schwarz-type inequality suggest that these kernels behave a lot like inner products even if we haven’t formally embedded the points in a Hilbert space yet.</p>
-<p>One nice property of positive definite kernels is that adding kernels, multiplying them, or taking limits produces new positive definite kernels. This lets us construct more complex kernels from simple ones.</p>
-<blockquote class="blockquote">
-<p><strong>Proposition 2:</strong> If <span class="math inline">\(k_i : \mathcal{X} \times \mathcal{X} \to \mathbb{C} \ (i=1,2,\ldots)\)</span> are positive definite kernels, then the following are also positive definite kernels.<br>
-1. <span class="math inline">\(ak_1 + bk_2 \quad (a,b \geq 0)\)</span> (positive combination)<br>
-2. <span class="math inline">\(k_1 k_2\)</span> (product)<br>
-3. <span class="math inline">\(\lim_{i \to \infty} k_i(x,y),\)</span> assuming the limit exists.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Proof: (1) and (3) are easy to see and for (2), it is enough to show that if two Hermitian matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are positive semidefinite, so is their component wise product (the Hadamard product). This can be done by taking the eigendecomposition of <span class="math inline">\(A\)</span> and then checking for the positve semidefiniteness of the Hadamard product.</p>
-</blockquote>
-<p>So far we looked at kernels abstractly. Proposition 3 shows how positive definite kernels naturally arise from inner products in some vector space. This is the first step towards seeing kernels encoding hidden geometries.</p>
-<blockquote class="blockquote">
-<p><strong>Proposition 3:</strong> Let <span class="math inline">\(\mathcal{V}\)</span> be a vector space with an inner product <span class="math inline">\(\langle \cdot , \cdot \rangle\)</span>. If we have a map <span class="math inline">\(\Phi : \mathcal{X} \to \mathcal{V}; x \mapsto \Phi(x)\)</span>, a positive definite kernel on <span class="math inline">\(\mathcal{X}\)</span> is defined by <span class="math display">\[k(x,y) = \langle \Phi(x), \Phi(y) \rangle.\]</span></p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Proof: Let <span class="math inline">\(x_1, \ldots, x_n\)</span> in <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(c_1, \ldots, c_n \in \mathbb{C}\)</span>. <span class="math display">\[
-\begin{align*}
-\sum_{i,j=1}^n c_i \overline{c_j} k(x_i, x_j)
-&amp;= \sum_{i,j=1}^n c_i \overline{c_j} \langle \Phi(x_i), \Phi(x_j) \rangle = \left\langle \sum_{i=1}^n c_i \Phi(x_i), \sum_{j=1}^n c_j \Phi(x_j) \right\rangle = \left\| \sum_{i=1}^n c_i \Phi(x_i) \right\|^2 \geq 0.
-\end{align*}
+<p>We briefly looked at rotations on a circle as examples in <a href="\posts\my-first-post">Poincaré Recurrence</a> and <a href="\posts\post-with-code">The Birkhoff’s Ergodic Theorem</a>. We will properly define rotations on a circle and look at a dichotomy for rotations first and then look at some dynamic properties of the same.</p>
+<p>In multiplicative notation we represent the circle as the unit circle in the complex plane <span class="math display">\[
+S^1=\{z \in \mathbb{C}: |z|=1\} = \{e^{2\pi i \varphi} :\varphi \in \mathbb{R}\}
+\]</span> and in additive notation we have: <span class="math inline">\(S^1= \mathbb{R}/\mathbb{Z}\)</span>. The map <span class="math inline">\(e^{2\pi i \varphi} \mapsto \varphi\)</span> establishes an isomorphism between these two representations. We denote by <span class="math inline">\(R_\alpha\)</span>, the rotation by angle <span class="math inline">\(2\pi \alpha\)</span>. In multiplicative notation we write, <span class="math inline">\(R_\alpha(z)=e^{2\pi i \alpha}(z)\)</span>. While in additive notation we have, <span class="math inline">\(R_\alpha(x)=(x+\alpha)\mod 1\)</span>. Here by (mod <span class="math inline">\(1\)</span>), we mean that numbers whose differences are integers are identified.</p>
+<p>Now we aim to study the orbit of a point <span class="math inline">\(x \in \mathbb{R}/\mathbb{Z}\)</span> under the map <span class="math inline">\(R_{\alpha}\)</span> Note that, the iterates of the rotation by <span class="math inline">\(\alpha\)</span> are <span class="math display">\[
+R_\alpha^n(z)=e^{2 \pi n \alpha}(z)\] or \[R_\alpha^n(x) = (x + n\alpha) \mod 1
 \]</span></p>
-</blockquote>
-<p>Proposition 4 shows how kernels can be “reweighted” by arbitrary functions to produce new kernels.</p>
-<blockquote class="blockquote">
-<p><strong>Proposition 4:</strong> Let <span class="math inline">\(k : \mathcal{X} \times \mathcal{X} \to \mathbb{C}\)</span> be a positive definite kernel and <span class="math inline">\(f : \mathcal{X} \to \mathbb{C}\)</span> be an arbitrary function. Then, <span class="math inline">\(\tilde{k}(x,y) = f(x) \, k(x,y) \, \overline{f(y)}\)</span> is positive definite. In particular, <span class="math inline">\(f(x)\overline{f(y)}\)</span> is a positive definite kernel.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Proof: Consider any <span class="math inline">\(n \in \mathbb{N}\)</span>, <span class="math inline">\(x_1, \ldots, x_n \in \mathcal{X}\)</span>, and <span class="math inline">\(c_1, \ldots, c_n \in \mathbb{C}\)</span> <span class="math display">\[
-\sum_{i,j=1}^n c_i \overline{c_j} \tilde{k}(x_i, x_j)
-= \sum_{i,j=1}^n c_i \overline{c_j} f(x_i) k(x_i, x_j) \overline{f(x_j)}  
-\]</span> Let <span class="math inline">\(d_i = c_i f(x_i)\)</span>. Then since <span class="math inline">\(k\)</span> is positive definite we have <span class="math display">\[
-\sum_{i,j=1}^n d_i \overline{d_j} k(x_i, x_j) \geq 0
-\]</span></p>
-</blockquote>
-<p>Now that we know how to construct positive definite kernels, let us look at some real-valued positive definite kernels on <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
+<p>We will prove that <span class="math inline">\(\alpha\)</span> dichotomizes rotations based on it being a rational or an irrational number.</p>
 </section>
-<section id="examples" class="level3">
-<h3 class="anchored" data-anchor-id="examples">Examples</h3>
-<ul>
-<li><p>Linear Kernel: <span class="math display">\[k_0(x,y) = x^{T}y\]</span> This directly follows from Proposition 3</p></li>
-<li><p>Exponential Kernel: <span class="math display">\[k_E(x,y) = exp(\beta x^{T}y) \quad \text{where} \quad \beta &gt; 0\]</span><br>
-This follows from the previous example and applying Proposition 2 after taking: <span class="math display">\[
-\exp(\beta x^T y) = 1 + \beta x^T y + \frac{\beta^2}{2!}(x^T y)^2 + \frac{\beta^3}{3!}(x^T y)^3 + \cdots
-\]</span></p></li>
-<li><p>Gaussian Radial Basis Function Kernel: <span class="math display">\[
-k_G(x,y) = \exp\!\left(-\frac{1}{2\sigma^2}\|x-y\|^2\right) \quad \text{where} \quad (\sigma &gt; 0)\]</span> This follows from Proposition 4 after taking: <span class="math display">\[
-\exp\left(-\frac{1}{2\sigma^2} \|x - y\|^2 \right) = \exp\left(-\frac{\|x\|^2}{2\sigma^2}\right) \exp\left(\frac{x^T y}{\sigma^2}\right) \exp\left(-\frac{\|y\|^2}{2\sigma^2}\right)
-\]</span></p></li>
-</ul>
-<p>On a concluding note, we saw the definition of a positive definite kernel and the ways to construct more such kernels which led to some examples. Our goal is to understand how positive definite kernels behave like inner products once you embed points into the appropriate Hilbert space which we will look into in the next post.</p>
+<section id="dichotomy-for-rotations" class="level3">
+<h3 class="anchored" data-anchor-id="dichotomy-for-rotations">Dichotomy for rotations</h3>
+<blockquote class="blockquote">
+<p><strong>Theorem 1:</strong> Let <span class="math inline">\(R_\alpha: \mathbb{R}\setminus\mathbb{Z} \rightarrow \mathbb{R}\setminus\mathbb{Z}\)</span> be a rotation of the circle.<br>
+1. If <span class="math inline">\(\alpha = p/q\)</span> is rational with <span class="math inline">\(p,q \in \mathbb{Z}\)</span>, all orbits are periodic of period <span class="math inline">\(q\)</span>.<br>
+2. If <span class="math inline">\(\alpha\)</span> is irrational, the rotation <span class="math inline">\(R_\alpha\)</span> is minimal i.e: the orbit of every point <span class="math inline">\(x \in \mathbb{R}\setminus\mathbb{Z}\)</span> is dense in <span class="math inline">\(\mathbb{R}\setminus\mathbb{Z}\)</span>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Proof:</strong> To prove (1), consider the additive notation for <span class="math inline">\(R_\alpha\)</span>. Let <span class="math inline">\(\alpha =p/q\)</span> with <span class="math inline">\(p,q \in \mathbb{Z}\)</span>. Then for each <span class="math inline">\(x \in \mathbb{R}/\mathbb{Z}\)</span>, <span class="math display">\[ R_\alpha^q(x)= x + q\frac{p}{q}\text{ (mod 1)} = x+ p\text{ (mod 1)} = x. \]</span> Thus every point is periodic of period <span class="math inline">\(q\)</span>.<br>
+To prove (2), If <span class="math inline">\(\alpha\)</span> is irrational, the orbit of any <span class="math inline">\(x \in \mathbb{R}\setminus\mathbb{Z}\)</span> is infinite and consists of distinct points. Given <span class="math inline">\(\varepsilon&gt;0\)</span>, choose <span class="math inline">\(N\)</span> so that <span class="math inline">\(1/N&lt;\varepsilon\)</span>. Among the first <span class="math inline">\(N+1\)</span> orbit points, two must lie within distance <span class="math inline">\(&lt;1/N\)</span>, so some iterate <span class="math inline">\(R_\alpha^m\)</span> is within <span class="math inline">\(\varepsilon\)</span> distance from <span class="math inline">\(R_\alpha^n\)</span>. Then we go on to prove that the orbit under <span class="math inline">\(R_\alpha\)</span> contains points spaced by arcs of length lesser than <span class="math inline">\(\varepsilon\)</span>, showing that for any <span class="math inline">\(y \in \mathbb{R}\setminus\mathbb{Z}\)</span> some iterate of <span class="math inline">\(x\)</span> lies within <span class="math inline">\(\varepsilon\)</span> of <span class="math inline">\(y\)</span>, making the orbit of <span class="math inline">\(x\)</span> dense.</p>
+</blockquote>
+<p>The complete proof can be found in the references.</p>
+</section>
+<section id="ergodicity" class="level3">
+<h3 class="anchored" data-anchor-id="ergodicity">Ergodicity</h3>
+<p>We have already seen the definition of <a href="\posts\post-with-code">Ergodicity</a>, where the system is measure-theoretically indecomposable. Let us requote it here:</p>
+<blockquote class="blockquote">
+<p>A measure preserving transformation T on a probability space is <strong>ergodic</strong> if for every <span class="math inline">\(T\)</span>-invariant set <span class="math inline">\(\mathcal{B}\)</span> in <span class="math inline">\(\beta\)</span> (i.e: sets <span class="math inline">\(\mathcal{B} \in \beta\)</span> such that <span class="math inline">\(T^{-1}(\mathcal{B})=\mathcal{B}\)</span>), either <span class="math inline">\(\mu(\mathcal{B})=0\)</span> or <span class="math inline">\(\mu(\mathcal{B})=1\)</span>.</p>
+</blockquote>
+<p>We have also seen that rational rotations are not ergodic. Turns out that irrational rotations are in fact ergodic but to prove it, directly checking invariant sets can get cumbersome. A convenient way of doing this is by looking at invariant functions instead. Functions can be thought of as observables on the system. If some observable does not change over time, it must reflect a hidden symmetry. Ergodicity should mean that no such nontrivial symmetry exists which motivates our next lemma, which is a characterization for ergodicity. We first look at what an invariant function is:</p>
+<blockquote class="blockquote">
+<p>Let <span class="math inline">\(T: \mathcal{X} \rightarrow \mathcal{X}\)</span> be a transformation. Any measurable function <span class="math inline">\(f: \mathcal{X} \rightarrow \mathbb{R}\)</span> is <strong>invariant under <span class="math inline">\(T\)</span></strong> or <strong><span class="math inline">\(T\)</span>-invariant</strong> if <span class="math inline">\(foT = f\)</span> <span class="math inline">\(\mu\)</span>-a.e. i.e: <span class="math inline">\(f(T(x))=f(x)\)</span> for <span class="math inline">\(\mu\)</span>-a.e <span class="math inline">\(x \in \mathcal{X}\)</span>.</p>
+</blockquote>
+<p>Now we have the following characterization for ergodicity.</p>
+<blockquote class="blockquote">
+<p><strong>Lemma 2:</strong> A measure-preserving transformation <span class="math inline">\(T: \mathcal{X} \rightarrow \mathcal{X}\)</span> is ergodic iff for any <span class="math inline">\(f \in L^2(\mathcal{X},\beta,\mu)\)</span> that is <span class="math inline">\(T\)</span>-invariant, we have that <span class="math inline">\(f\)</span> is <span class="math inline">\(\mu\)</span>-a.e constant.</p>
+</blockquote>
+<p>This lemma tells us that ergodicity is equivalent to saying that the only observables that remain unchanged under the given transformation are the trivial, constant ones.</p>
+<p>Note that we can obtain a similar characteriztion if <span class="math inline">\(f \in L^p(\mathcal{X},\beta,\mu)\)</span> and for any <span class="math inline">\(p \geq 1\)</span>.</p>
+<p>Fourier series can elegantly be used along with the above characterization to show that certain maps are ergodic.</p>
+<blockquote class="blockquote">
+<p><strong>Theorem 3:</strong> Irrational rotations on <span class="math inline">\(\mathbb{R}/\mathbb{Z}\)</span> are ergodic.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Proof:</strong> Our goal is to prove that for a given <span class="math inline">\(f \in L^2(\mu)\)</span>, if <span class="math inline">\(f \circ R_\alpha = f\)</span> almost everywhere, then it is constant almost everywhere. Then this is equivalent to the ergodicity of <span class="math inline">\(R_\alpha\)</span>. Since <span class="math inline">\(f \in L^2(\mathbb{R}/\mathbb{Z}, \mathcal{B}, \lambda)\)</span>, <span class="math inline">\(f\)</span> is equal in <span class="math inline">\(L^2\)</span> to its Fourier series. <span class="math display">\[ \sum_{n=-\infty}^{+\infty} c_n e^{2\pi i n x}, \quad \text{where} \quad c_n = \int f(x)e^{-2\pi i n x} \, dx, \quad n \in \mathbb{Z}.\]</span> The Fourier series for <span class="math inline">\(f \circ R_\alpha\)</span> is <span class="math display">\[ \sum_{n=-\infty}^{+\infty} c_n e^{2\pi i n (x+\alpha)} = \sum_{n=-\infty}^{+\infty} c_n e^{2\pi i n \alpha} e^{2\pi i n x}. \]</span> Since <span class="math inline">\(f = f \circ R_\alpha\)</span> almost everywhere, <span class="math inline">\(f = f \circ R_\alpha\)</span> in <span class="math inline">\(L^2\)</span> and so both Fourier series must be the same. Thus, by uniqueness of the Fourier coefficients, it will be that <span class="math display">\[ c_n = c_n e^{2\pi i n \alpha} \quad \Leftrightarrow \quad c_n (1 - e^{2\pi i n \alpha}) = 0 \quad \text{for all } n \in \mathbb{Z}. \]</span> If <span class="math inline">\((1 - e^{2\pi i n \alpha}) \neq 0\)</span>, we will have that <span class="math inline">\(c_n = 0\)</span>. Since <span class="math inline">\(\alpha\)</span> is irrational, all orbits of <span class="math inline">\(R_\alpha\)</span> are infinite and distinct so in particular the orbit <span class="math inline">\(R_\alpha^n(0) = n\alpha \mod 1\)</span> consists of distinct points. Hence if <span class="math inline">\(n \alpha \mod 1 \neq 0\)</span> for all <span class="math inline">\(n \neq 0\)</span> we have that <span class="math inline">\((1 - e^{2\pi i n \alpha}) \neq 0\)</span>, which in turn implies that <span class="math inline">\(c_n = 0.\)</span> Thus all Fourier coefficients are zero apart from possibly <span class="math inline">\(c_0\)</span> and <span class="math inline">\(f = c_0\)</span> is constant.</p>
+</blockquote>
+<p>To conclude, we have a clear dichotomy: rational rotations leading to periodic and non-ergodic transformations, while irrational rotations leading to dense orbits and ergodic transformations. We will use these results along with the <a href="\posts\post-with-code">Birhoff’s Ergodic theorem</a> to obtain an answer to the very interesting Gelfand’s question.</p>
 <div class="comment-section">
 <!-- Giscus comments widget -->
 <script src="https://giscus.app/client.js" data-repo="MostlyMath/MostlyMathematics" data-repo-id="R_kgDOPrVY4w" data-category="Comments" data-category-id="DIC_kwDOPrVY484CvwcT" data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
@@ -357,14 +323,17 @@ k_G(x,y) = \exp\!\left(-\frac{1}{2\sigma^2}\|x-y\|^2\right) \quad \text{where} \
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-aronszajn1950theory" class="csl-entry" role="listitem">
-Aronszajn, Nachman. 1950. <span>“Theory of Reproducing Kernels.”</span> <em>Transactions of the American Mathematical Society</em> 68 (3): 337–404. <a href="https://doi.org/10.1090/S0002-9947-1950-0037978-4">https://doi.org/10.1090/S0002-9947-1950-0037978-4</a>.
+<div id="ref-hasselblatt-2003" class="csl-entry" role="listitem">
+Hasselblatt, Boris, and Anatole Katok. 2003. <em><span class="nocase">A first course in dynamics</span></em>. Cambridge University Press.
 </div>
-<div id="ref-berlinet2004reproducing" class="csl-entry" role="listitem">
-Berlinet, Alain, and Christine Thomas-Agnan. 2004. <em>Reproducing Kernel Hilbert Spaces in Probability and Statistics</em>. Springer Science &amp; Business Media.
+<div id="ref-jordan-2016" class="csl-entry" role="listitem">
+Jordan, Thomas, Corinna Ulcigrai, and University of Bristol. 2016. <em><span class="nocase">Dynamical systems and ergodic theory</span></em>. <a href="https://people.maths.bris.ac.uk/~ip13935/dyn/CorinnaIII.pdf">https://people.maths.bris.ac.uk/~ip13935/dyn/CorinnaIII.pdf</a>.
 </div>
-<div id="ref-fukumizu2008kernel" class="csl-entry" role="listitem">
-Fukumizu, Kenji. 2008. <span>“Elements of Positive Definite Kernel and Reproducing Kernel Hilbert Space: Statistical Inference with Reproducing Kernel Hilbert Space.”</span> Institute of Statistical Mathematics, ROIS; Department of Statistical Science, Graduate University for Advanced Studies; <a href="https://www.ism.ac.jp/~fukumizu/H20_kernel/Kernel_2_elements.pdf" class="uri">https://www.ism.ac.jp/~fukumizu/H20_kernel/Kernel_2_elements.pdf</a>.
+<div id="ref-silva2008" class="csl-entry" role="listitem">
+Silva, César E. 2008. <em>Invitation to Ergodic Theory</em>. Vol. 42. Student Mathematical Library. Providence, RI: American Mathematical Society.
+</div>
+<div id="ref-walters1982" class="csl-entry" role="listitem">
+Walters, Peter. 1982. <em>An Introduction to Ergodic Theory</em>. Vol. 79. Graduate Texts in Mathematics. New York: Springer-Verlag.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
