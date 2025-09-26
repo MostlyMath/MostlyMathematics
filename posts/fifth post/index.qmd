@@ -12,7 +12,7 @@ nocite: |
 
 ### Introduction
 
-We briefly looked at rotations on a circle as examples in [Poincaré Recurrence](\posts\my-first-post) and [The Birkhoff's Ergodic Theorem](\posts\post-with-code). We will properly define rotations on a circle and look at a dichotomy for rotations first and then look at some dynamic properties of the same.
+We briefly looked at rotations on a circle as examples in [Poincaré Recurrence](\posts\my-first-post) and [The Birkhoff's Ergodic Theorem](\posts\post-with-code). In this post we will properly define rotations on a circle and look at an interesting dichotomy for rotations on a circle
 
 In multiplicative notation we represent the circle as the unit circle in the complex plane 
 $$
