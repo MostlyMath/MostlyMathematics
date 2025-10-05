@@ -32,6 +32,8 @@ website:
             href: categories/probability.qmd
           - text: Ergodic Theory
             href: categories/ergodic_theory.qmd
+          - text: Operator Theory
+            href: categories/operator_theory.qmd
   sidebar:
     style: "docked"
     contents: auto

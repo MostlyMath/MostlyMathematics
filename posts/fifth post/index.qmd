@@ -1,5 +1,6 @@
 ---
 title: Dynamics of irrational rotations
+author: Aparna Bade
 date: 2025-09-26
 categories: [Analysis,Dynamics, Ergodic Theory]
 bibliography: ../../references.bib
@@ -9,8 +10,6 @@ nocite: |
  @hasselblatt-2003
  @jordan-2016
 ---
-
-### Introduction
 
 We briefly looked at rotations on a circle as examples in [Poincaré Recurrence](\posts\my-first-post) and [The Birkhoff's Ergodic Theorem](\posts\post-with-code). In this post we will properly define rotations on a circle and look at an interesting dichotomy for rotations on a circle
 
@@ -27,6 +26,8 @@ $$
 
 We will prove that $\alpha$ dichotomizes rotations based on it being a rational or an irrational number. 
 
+---
+
 ### Dichotomy for rotations
 
 > **Theorem 1:** Let $R_\alpha: \mathbb{R}\setminus\mathbb{Z} \rightarrow \mathbb{R}\setminus\mathbb{Z}$ be a rotation of the circle.  
@@ -37,6 +38,8 @@ We will prove that $\alpha$ dichotomizes rotations based on it being a rational 
 > To prove (2), If $\alpha$ is irrational, the orbit of any $x \in \mathbb{R}\setminus\mathbb{Z}$ is infinite and consists of distinct points. Given $\varepsilon>0$, choose $N$ so that $1/N<\varepsilon$. Among the first $N+1$ orbit points, two must lie within distance $<1/N$, so some iterate $R_\alpha^m$ is within $\varepsilon$ distance from $R_\alpha^n$. Then we go on to prove that the orbit under $R_\alpha$ contains points spaced by arcs of length lesser than $\varepsilon$, showing that for any $y \in \mathbb{R}\setminus\mathbb{Z}$ some iterate of $x$ lies within $\varepsilon$ of $y$, making the orbit of $x$ dense.
 
 The complete proof can be found in the references.
+
+---
 
 ### Ergodicity 
 

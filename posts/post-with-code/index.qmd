@@ -1,5 +1,6 @@
 ---
 title: "The Birkhoff's Ergodic Theorem"
+author: Aparna Bade
 date: "2025-09-10"
 categories: [Analysis, Dynamics, Ergodic Theory]
 bibliography: ../../references.bib
@@ -8,8 +9,6 @@ nocite: |
   @silva2008
   @assani2003wiener
 ---
-
-### Introduction
 
 The ergodic theorem was proved in 1931, first by John von Neumann in the case of ${\mathcal{L}}^2$ convergence and then by Birkhoff in the much stronger case of pointwise convergence which solved the most fundamental question in statistical mechanics: when does the time average converge to the space average? Before getting into this let us think about what [Poincaré Recurrence](\posts\my-first-post\#poincaré’s-recurrence-theorem) gave us:
 
@@ -28,6 +27,8 @@ Some questions we may have are: Will such a limit exist in the first place? Unde
 Let us genralize our problem to an arbitary measurable or integrable function $f$ instead of the characteristic function and call the limit the time average. So now we want to know what could possibly happen to $$ \lim_{N \to \infty} \frac{1}{N} \sum_{i=0}^{N-1} f(T^i(x)) $$
 
 Boltzmann (in a very physics pov perhaps) hypothesized that the time average converges to the space average which is $\int f d\mu$. This is not quite true always which leads us to the Birkhoff's ergodic theorem which says that in the case of an ergodic system, the time average converges to the space average. Let us first understand what an ergodic transformation is.
+
+---
 
 ### Ergodicity
 
@@ -49,12 +50,16 @@ This set is invariant under $R_\alpha$ as it sends each interval in $\mathcal{A}
 
 We are now ready to state the Birkhoff's ergodic theorem. Note that we restrict ourselves to a probability space since any finite measure space can be normalized accordingly.
 
+---
+
 ### The Birkhoff's Ergodic Theorem
 
 > Let $(\mathcal{X},\beta,\mu)$ be a probability space and let $T$ be an ergodic transformation on $(\mathcal{X},\beta,\mu)$. If $f: \mathcal{X} \to \mathbb{R}$ is an integrable function, then for $\mu$-a.e $x \in \mathcal{X}$
 > $$
     \lim_{n \to \infty} \frac{1}{n} \sum_{i=0}^{n-1} f(T^i(x)) = \int f d\mu 
   $$
+
+---
 
 ### Can ergodicity be relaxed?
 

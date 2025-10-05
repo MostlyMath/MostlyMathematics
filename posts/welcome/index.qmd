@@ -1,5 +1,6 @@
 ---
 title: "Positive Definite Kernels"
+author: Aparna Bade
 date: "2025-09-15"
 categories: [Analysis]
 bibliography: ../../references.bib
@@ -9,13 +10,14 @@ nocite: |
   @aronszajn1950theory
 ---
 
-### Introduction
 
 This post is Part I of the series on reproducing kernel Hilbert spaces (RKHS). In functional analysis and related areas, we often encounter functions that speak of the relationships between points in a space (a metric or a distance function for instance). A kernel is such a function, taking two inputs and returning a real or a complex number, which can be interpreted as a measure of similarity or interaction.
 
 Amongst these kernels, a special class called positive definite kernels play a central role as they are characterized by an intrinsic property that guarantees the existence of an associated [Hilbert space](https://en.wikipedia.org/wiki/Hilbert_space) of functions (a reproducing kernel Hilbert space which we will look into in the next post).
 
 Positive definite kernels are not just abstract objects, they also provide the foundation for constructing function spaces, understanding linear operators, and formulating problems in approximation theory and analysis. In this post, we will define positive definite kernels, explore some properties, and look into some examples.
+
+---
 
 ### Positive Definite Kernels
 
@@ -85,17 +87,19 @@ $$
 
 Now that we know how to construct positive definite kernels, let us look at some real-valued positive definite kernels on $\mathbb{R}^n$.
 
+---
+
 ### Examples
 
-- Linear Kernel: $$k_0(x,y) = x^{T}y$$ 
-This directly follows from Proposition 3
-- Exponential Kernel: $$k_E(x,y) = exp(\beta x^{T}y) \quad \text{where} \quad \beta > 0$$  
-This follows from the previous example and applying Proposition 2 after taking:
+1. **Linear Kernel**: $$k_0(x,y) = x^{T}y$$ 
+  This directly follows from Proposition 3
+2. **Exponential Kernel**: $$k_E(x,y) = exp(\beta x^{T}y) \quad \text{where} \quad \beta > 0$$  
+   This follows from the previous example and applying Proposition 2 after taking:
 $$
 \exp(\beta x^T y) = 1 + \beta x^T y + \frac{\beta^2}{2!}(x^T y)^2 + \frac{\beta^3}{3!}(x^T y)^3 + \cdots
 $$
 
-- Gaussian Radial Basis Function Kernel:  $$
+3. **Gaussian Radial Basis Function Kernel**:  $$
 k_G(x,y) = \exp\!\left(-\frac{1}{2\sigma^2}\|x-y\|^2\right) \quad \text{where} \quad (\sigma > 0)$$
 This follows from Proposition 4 after taking:
 $$

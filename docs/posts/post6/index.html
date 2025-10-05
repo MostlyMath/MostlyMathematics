@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aparna Bade">
-<meta name="dcterms.date" content="2025-09-19">
+<meta name="dcterms.date" content="2025-10-04">
 
-<title>Reproducing Kernel Hilbert Spaces - An Introduction – Mostly Mathematics</title>
+<title>C* Algebras – Mostly Mathematics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -162,7 +162,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fifth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Reproducing Kernel Hilbert Spaces - An Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fifth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/post6/index.html">C* Algebras</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -171,10 +171,11 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fifth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/fourth post/index.html">Reproducing Kernel Hilbert Spaces - An Introduction</a></li></ol></nav>
-      <h1 class="title">Reproducing Kernel Hilbert Spaces - An Introduction</h1>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/fifth post/index.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/post6/index.html">C* Algebras</a></li></ol></nav>
+      <h1 class="title">C* Algebras</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Analysis</div>
+                <div class="quarto-category">Operator theory</div>
               </div>
                   </div>
   </div>
@@ -192,7 +193,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 19, 2025</p>
+        <p class="date">October 4, 2025</p>
       </div>
     </div>
     
@@ -232,7 +233,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/fourth post/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/fourth post/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reproducing Kernel Hilbert Spaces - An Introduction</span></a>
   </div>
 </li>
@@ -250,7 +251,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/post6/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/post6/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">C* Algebras</span></a>
   </div>
 </li>
@@ -275,55 +276,40 @@ window.Quarto = {
 
 
 
-<p>This post is Part II of the series on Reproducing Kernel Hilbert Spaces (RKHS). We have so far looked at <a href="../..\posts/welcome">Positive Definite Kernels</a>: special functions <span class="math inline">\(k(x,y)\)</span> that produce Gram matrices that are positive semidefinite for any finite set of points. At first glance, this definition may feel a little abstract making us wonder why we should even care about kernels satisfying such an inequality.</p>
-<p>One reason is that positive definite kernels secretly encode a hidden geometry: each kernel corresponds to a Hilbert space of functions, where the kernel itself acts as a sort of “building block.” This Hilbert space is what we call a Reproducing Kernel Hilbert Space (RKHS).</p>
-<p>What makes an RKHS so interesting is the reproducing property. In an RKHS <span class="math inline">\(\mathcal{H}\)</span>, evaluating a function at a point <span class="math inline">\(x\)</span> can be done by taking an inner product with a special function <span class="math inline">\(k_x\)</span> corresponding to that point: <span class="math display">\[ f(x) = {\langle f, k_x \rangle}_{\mathcal{H}} \]</span></p>
-<p>Why is it useful? Firstly it simply guarantees that point evaluation is always a nice, continuous operation (unlike in some spaces such as <span class="math inline">\({\mathcal{L}}^2\)</span>, where evaluation doesn’t even make sense). Secondly it lays the mathematical foundation for many mathematical applications including machine learning algorithms (like kernel methods and Gaussian processes), signal processing, approximation theory, and even parts of harmonic analysis rely substantially on RKHS.</p>
-<p>In this post, we will understand the relation between positive definite kernels and reproducing kernel Hilbert spaces. We will see that every RKHS comes with a unique reproducing kernel which is positive definite, and that every positive definite kernel gives rise to a corresponding RKHS.</p>
+<p>When I first came across the definition of a C* algebra, it looked like yet another list of axioms: a Banach algebra with an involution satisfying the C* identity. At first glance, this might seem pretty technical. But we do not add structure just for the sake of it. C* algebras are exactly the right framework for studying operators and functions in analysis.</p>
 <hr>
-<section id="reproducing-kernel-hilbert-spaces-rkhs" class="level3">
-<h3 class="anchored" data-anchor-id="reproducing-kernel-hilbert-spaces-rkhs">Reproducing Kernel Hilbert Spaces (RKHS)</h3>
+<section id="from-linear-algebra-to-operator-algebras" class="level3">
+<h3 class="anchored" data-anchor-id="from-linear-algebra-to-operator-algebras">From Linear Algebra to Operator Algebras</h3>
+<p>In linear algebra, we were used to working with vector spaces and linear transformations. In particular, if we consider finite dimensional vector space, everything behaves nicely. We will have that every operator is bounded, norms are equivalent, and matrices give us a concrete idea of what is happening.</p>
+<p>Once we move to <strong>infinite-dimensional Hilbert spaces</strong>, things get more complicated. We will not have that every operator is bounded, but bounded operators do form a rich algebra. They can be added, multiplied (composition), and scaled. We also have an adjoint operator.</p>
+<p>So a natural question one might have is if we can study this algebra of operators in a systematic way. This was the original motivation for C* algebras. Note that C* algebras do not necessarily have to be operators, they just have a similar structure. And here is a nice surprise: when a C* algebra happens to be commutative, it is basically the same as a space of continuous functions on some compact space. In fact, this space is hidden inside the algebra and can be recovered from it. This is the starting point of Gelfand theory which deeply connects algebra and topology. We will see more of this soon.</p>
+<hr>
+</section>
+<section id="c-algebras" class="level3">
+<h3 class="anchored" data-anchor-id="c-algebras">C* algebras</h3>
+<p>First let us see the defintion of a Banach algebra. Roughly speaking, it is a Banach space that also has an algebra structure. More concretely:</p>
 <blockquote class="blockquote">
-<p>Let <span class="math inline">\(\mathcal{X}\)</span> be a set. A <strong>reproducing kernel Hilbert space (RKHS)</strong> over <span class="math inline">\(\mathcal{X}\)</span> is a Hilbert space <span class="math inline">\(\mathcal{H}\)</span> consisting of functions on <span class="math inline">\(\mathcal{X}\)</span> such that for each <span class="math inline">\(x \in \mathcal{X}\)</span> there is a function <span class="math inline">\(k_x \in \mathcal{H}\)</span> with the reproducing property <span class="math display">\[
-\langle f, k_x \rangle_\mathcal{H} = f(x) \qquad ;\forall f \in \mathcal{H} \qquad .
-\]</span> Considering <span class="math inline">\(k(\cdot, x) = k_x(\cdot)\)</span>. The function <span class="math inline">\(k\)</span> is called a <strong>reproducing kernel</strong> of <span class="math inline">\(\mathcal{H}\)</span>.</p>
+<p>A <strong>Banach algebra</strong> is a Banach space <span class="math inline">\(\mathcal{A}\)</span> over <span class="math inline">\(\mathbb{C}\)</span> with a multiplication <span class="math display">\[
+\mathcal{A} \times \mathcal{A} \to \mathcal{A} \]</span> that is bilinear, associative, and satisfies the <strong>submultiplicative inequality</strong> <span class="math display">\[
+\|ab\| \leq \|a\| \, \|b\| \quad \text{for all } a,b \in \mathcal{A}. \]</span></p>
 </blockquote>
-<p>Simply speaking, the evaluation of any function from <span class="math inline">\(\mathcal{H}\)</span> at each <span class="math inline">\(x \in \mathcal{X}\)</span> is the same as taking the inner product of <span class="math inline">\(f\)</span> with a corresponding <span class="math inline">\(k_x\)</span> in <span class="math inline">\(\mathcal{H}\)</span>. We will prove that the above reproducing kernel is in fact a positive definite kernel on <span class="math inline">\(\mathcal{X}\)</span>. Firstly, applying the reproducing property above to the function <span class="math inline">\(k(\cdot,x_j)\)</span> (which is in <span class="math inline">\(\mathcal{H}\)</span>) at the point <span class="math inline">\(x_i\)</span> we get: <span class="math inline">\(k(x_i,x_j) = k_{x_j}(x_i) = {\langle k(\cdot,x_j), k(\cdot,x_i)\rangle}_{\mathcal{H}}\)</span>. We will use this equality in further proofs.</p>
+<p>This condition makes multiplication a continuous bilinear map, so the algebra structure and the norm interact nicely. Sometimes we also assume that there is a multiplicative identity <span class="math inline">\(1 \in \mathcal{A}\)</span>. Now let us look at C* algebras.</p>
 <blockquote class="blockquote">
-<p>Proposition 1: A reproducing kernel of a RKHS is a positive definite kernel on <span class="math inline">\(X\)</span>.</p>
+<p>A <strong>C* algebra</strong> is a complex Banach algebra <span class="math inline">\(\mathcal{A}\)</span> equipped with an involution (<span class="math inline">\(*\)</span>), an operation <span class="math inline">\(a \mapsto a^*\)</span> such that <span class="math inline">\((a^*)^* = a, (ab)^* = b^* a^*\)</span>, and <span class="math inline">\({\lambda a}^* = \overline{\lambda} a^*\)</span> which satisfy the <strong>C* identity</strong>: <span class="math display">\[
+\|a^* a\| = \|a\|^2 \quad \text{for all } a \in \mathcal{A}. \]</span></p>
 </blockquote>
-<blockquote class="blockquote">
-<p>Proof: Using the above equality we obtain<span class="math display">\[
-\sum_{i,j=1}^n c_i \overline{c_j} k(x_i, x_j)
-= \sum_{i,j=1}^n c_i \overline{c_j} \langle k(\cdot, x_j), k(\cdot, x_i) \rangle
-= \left\langle \sum_{i=1}^n c_i k(\cdot, x_i), \sum_{j=1}^n c_j k(\cdot, x_j) \right\rangle
-\geq 0
-\]</span></p>
-</blockquote>
-<p>Note that the reproducing kernel on a Hilbert space is unique if it exists. Suppose <span class="math inline">\(k\)</span> and <span class="math inline">\(\tilde{k}\)</span> are reproducing kernels. Then we have <span class="math inline">\(\widetilde{k}(x, y) = \langle \widetilde{k}(\cdot, y), k(\cdot, x) \rangle = \langle k(\cdot, x), \widetilde{k}(\cdot, y) \rangle = \overline{k(y, x)} = k(x, y)\)</span>.</p>
-<p>Also note that <span class="math inline">\(\|k(\cdot, x)\| = \sqrt{k(x, x)}\)</span> since <span class="math inline">\(\|k(\cdot, x)\|^2 = \langle k(\cdot, x), k(\cdot, x) \rangle = k(x, x)\)</span>.</p>
-<p>At this point we might wonder why we care about this reproducing property and what it has to do with evaluation at a point. The key is that evaluation should be a nice operation. Like we noted before, in some Hilbert spaces of functions (like <span class="math inline">\({\mathcal{L}}^2\)</span>), evaluation doesn’t even make sense as two different-looking functions might represent the same element of the space making <span class="math inline">\(f(x)\)</span> ambiguous.</p>
-<p>To avoid this, we require that the evaluation map <span class="math inline">\(e_x(f) = f(x)\)</span> to be a continuous linear functional for every point <span class="math inline">\(x\)</span>. Once this condition holds, the <a href="https://en.wikipedia.org/wiki/Riesz_representation_theorem">Riesz representation theorem</a> guarantees the existence of the kernel elements <span class="math inline">\(k_x\)</span> and the reproducing property follows naturally. In fact, the continuity of evaluation functions characterizes RKHS.</p>
-<blockquote class="blockquote">
-<p>Proposition 2: Let <span class="math inline">\(\mathcal{H}\)</span> be a Hilbert space consisting of functions on a set <span class="math inline">\(\mathcal{X}\)</span>. Then <span class="math inline">\(\mathcal{H}\)</span> is a RKHS iff the evaluation map <span class="math inline">\(e_x : \mathcal{H} \rightarrow \mathbb{F}, e_x(f) = f(x)\)</span>, is a continuous linear functional for each <span class="math inline">\(x \in \mathcal{X}\)</span>.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Proof: Assume <span class="math inline">\(\mathcal{H}\)</span> is a RKHS. We obtain the boundedness of <span class="math inline">\(e_x\)</span> from <span class="math display">\[|e_x(f)| = |\langle f, k_x \rangle| \leq \|k_x\| \|f\|.\]</span> Conversely, let’s assume that the evaluation map is continuous. By Riesz representation theorem, there exists a <span class="math inline">\(k_x \in \mathcal{H}\)</span> such that <span class="math display">\[\langle f, k_x \rangle = e_x(f) = f(x).\]</span></p>
-</blockquote>
-<p>So far, we’ve seen the following two things:</p>
-<ul>
-<li><p>Every RKHS has a reproducing kernel which turns out to be positive definite.</p></li>
-<li><p>continuous evaluation functionals characterizing RKHS</p></li>
-</ul>
-<p>The natural question now is: given just a positive definite kernel, can we always build the “corresponding” Hilbert space in some sense.</p>
-<p>Turns out, every positive definite kernel corresponds to a unique RKHS. In other words, kernels are not just abstract inequalities, they actually encode entire Hilbert spaces of functions. Theorem 3 makes this precise.</p>
-<blockquote class="blockquote">
-<p>Theorem 3: Let <span class="math inline">\(k : \mathcal{X} \times \mathcal{X} \to \mathbb{C}\)</span> (or <span class="math inline">\(\mathbb{R}\)</span>) be a positive definite kernel on a set <span class="math inline">\(\mathcal{X}\)</span>. Then, there uniquely exists a RKHS <span class="math inline">\(\mathcal{H}_k\)</span> consisting of functions on <span class="math inline">\(\mathcal{X}\)</span> such that<br>
-1. <span class="math inline">\(k(\cdot, x) \in \mathcal{H}_k\)</span> for every <span class="math inline">\(x \in \mathcal{X}\)</span>,<br>
-2. Span <span class="math inline">\(\{k(\cdot, x) \mid x \in \mathcal{X}\}\)</span> is dense in <span class="math inline">\(\mathcal{H}_k\)</span>,<br>
-3. <span class="math inline">\(k\)</span> is a reproducing kernel on <span class="math inline">\(\mathcal{H}_k\)</span>, i.e.&nbsp;<span class="math inline">\(\langle f, k(\cdot, x) \rangle_{\mathcal{H}_k} = f(x),\)</span> for all x and <span class="math inline">\(f \in \mathcal{H}_k.\)</span></p>
-</blockquote>
-<p>Theorem 3 is the main result we were aiming for: every positive definite kernel actually generates a unique RKHS. This shows that kernels are not just abstract objects and that they encode entire function spaces with nice geometric properties. In the next post, we will probably dive into the proof and see exactly how this Hilbert space is constructed from the kernel. We will also look at some concrete examples of RKHS and explicitly write their reproducing kernels.</p>
+<p>This identity is much stronger than it looks. It implies <span class="math inline">\(\|a^*\| = \|a\|\)</span>, making the involution isometric.</p>
+<hr>
+</section>
+<section id="examples" class="level3">
+<h3 class="anchored" data-anchor-id="examples">Examples</h3>
+<ol type="1">
+<li><p><strong>Continuous functions on a compact space.</strong> Let <span class="math inline">\(\mathcal{X}\)</span> be a compact Hausdorff space. The algebra <span class="math inline">\(C(\mathcal{X})\)</span> of complex-valued continuous functions becomes a C*algebra with <span class="math display">\[
+f^*(x) = \overline{f(x)}, \quad |f| = \sup_{x \in X} |f(x)|.\]</span> This is commutative and will be central when we will look at Gelfand theory.</p></li>
+<li><p><strong>Bounded operators on Hilbert space.</strong> Let <span class="math inline">\(\mathcal{H}\)</span> be a Hilbert space. The algebra <span class="math inline">\(\mathcal{B}(\mathcal{H})\)</span> of all bounded linear operators on <span class="math inline">\(\mathcal{H}\)</span> is a prototypical example of a C* algebra. Here <span class="math inline">\(T^*\)</span> is simply the adjoint operator. Most noncommutative examples arise as subalgebras of some <span class="math inline">\(\mathcal{B}(\mathcal{H})\)</span>.</p></li>
+</ol>
+<hr>
+<p>We shall discuss the <strong>Gelfand–Mazur theorem</strong> soon, which shows that the complex numbers are in some sense the <strong>only</strong> Banach division algebra.</p>
 <div class="comment-section">
 <!-- Giscus comments widget -->
 <script src="https://giscus.app/client.js" data-repo="MostlyMath/MostlyMathematics" data-repo-id="R_kgDOPrVY4w" data-category="Comments" data-category-id="DIC_kwDOPrVY484CvwcT" data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
@@ -335,17 +321,14 @@ window.Quarto = {
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-aronszajn1950theory" class="csl-entry" role="listitem">
-Aronszajn, Nachman. 1950. <span>“Theory of Reproducing Kernels.”</span> <em>Transactions of the American Mathematical Society</em> 68 (3): 337–404. <a href="https://doi.org/10.1090/S0002-9947-1950-0037978-4">https://doi.org/10.1090/S0002-9947-1950-0037978-4</a>.
+<div id="ref-bollobas1999linear" class="csl-entry" role="listitem">
+Bollobás, Béla. 1999. <em>Linear Analysis: An Introductory Course</em>. Cambridge University Press.
 </div>
-<div id="ref-berlinet2004reproducing" class="csl-entry" role="listitem">
-Berlinet, Alain, and Christine Thomas-Agnan. 2004. <em>Reproducing Kernel Hilbert Spaces in Probability and Statistics</em>. Springer Science &amp; Business Media.
+<div id="ref-folland2016course" class="csl-entry" role="listitem">
+Folland, Gerald B. 2016. <em>A Course in Abstract Harmonic Analysis</em>. 2nd ed. Chapman; Hall/CRC. <a href="https://doi.org/10.1201/b19172">https://doi.org/10.1201/b19172</a>.
 </div>
-<div id="ref-fukumizu2008kernel" class="csl-entry" role="listitem">
-Fukumizu, Kenji. 2008. <span>“Elements of Positive Definite Kernel and Reproducing Kernel Hilbert Space: Statistical Inference with Reproducing Kernel Hilbert Space.”</span> Institute of Statistical Mathematics, ROIS; Department of Statistical Science, Graduate University for Advanced Studies; <a href="https://www.ism.ac.jp/~fukumizu/H20_kernel/Kernel_2_elements.pdf" class="uri">https://www.ism.ac.jp/~fukumizu/H20_kernel/Kernel_2_elements.pdf</a>.
-</div>
-<div id="ref-wiki:rkhs" class="csl-entry" role="listitem">
-Wikipedia contributors. 2024. <span>“<span class="nocase">Reproducing kernel Hilbert space — Wikipedia<span>,</span> The Free Encyclopedia</span>.”</span> <a href="https://en.wikipedia.org/wiki/Reproducing_kernel_Hilbert_space" class="uri">https://en.wikipedia.org/wiki/Reproducing_kernel_Hilbert_space</a>.
+<div id="ref-narayanan_cstar_nptel" class="csl-entry" role="listitem">
+Narayanan, E. K. 2023. <span>“C* Algebras and Spectral Theorem.”</span> NPTEL Swayam Online Course.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

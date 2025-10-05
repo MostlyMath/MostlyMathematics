@@ -1,5 +1,6 @@
 ---
 title: "Poincaré Recurrence"
+author: Aparna Bade
 date: 2025-09-05
 categories: [Analysis, Dynamics, Ergodic Theory]
 bibliography: ../../references.bib
@@ -8,8 +9,6 @@ nocite: |
   @silva2008
   @petersen1983
 ---
-
-### Introduction
 
 When we talk of dynamical systems, the basic idea is that we pick a space $\mathcal{X}$, choose a rule $T: \mathcal{X} \to \mathcal{X}$, and then we keep applying that rule over and over again to a point $x \in \mathcal{X}$.
 
@@ -35,9 +34,8 @@ To even begin answering this, we need some extra structure. Just having a set $\
 If we give our space a [measure](https://en.wikipedia.org/wiki/Measure_space) (so we can talk about sizes of sets, probabilities, and so on), and if our transformation $T$ respects that measure, we might be able to answer our question. And hence we consider the setting of a **measure-preserving system**.  
 
 And in this setting we have a deep and beautiful result: the **Poincaré Recurrence Theorem**, which tells us something quite striking about orbits. But before we get there, let’s first understand what measure-preserving systems actually are.  
-
  
-
+---
 
 ### Measure Preserving Systems
 
@@ -45,6 +43,8 @@ And in this setting we have a deep and beautiful result: the **Poincaré Recurre
 
 
 A measure-preserving transformation just rearranges the space without changing sizes of sets (like shuffling cards for instance: positions change, but nothing is lost or gained). We use $T^{-1}$ in the definition because preimages are always measurable (images need not be), and they correctly account for all points mapping into a set, even if $T$ is not one-to-one (for instance the [doubling map](https://en.wikipedia.org/wiki/Dyadic_transformation) on a circle). Check that rotating the circle just shifts arcs around without changing their length, so the [Lebesgue measure](https://en.wikipedia.org/wiki/Lebesgue_measure) is preserved making it a measure preserving transformation.
+
+---
     
 ### Poincaré's Recurrence Theorem
 

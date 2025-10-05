@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Aparna Bade">
 <meta name="dcterms.date" content="2025-09-05">
 
 <title>Poincaré Recurrence – Mostly Mathematics</title>
@@ -183,6 +184,12 @@ window.Quarto = {
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Aparna Bade </p>
+            </div>
+    </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
@@ -245,6 +252,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/post6/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">C* Algebras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/welcome/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Positive Definite Kernels</span></a>
   </div>
@@ -264,8 +277,6 @@ window.Quarto = {
 
 
 
-<section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
 <p>When we talk of dynamical systems, the basic idea is that we pick a space <span class="math inline">\(\mathcal{X}\)</span>, choose a rule <span class="math inline">\(T: \mathcal{X} \to \mathcal{X}\)</span>, and then we keep applying that rule over and over again to a point <span class="math inline">\(x \in \mathcal{X}\)</span>.</p>
 <p>So if we start with <span class="math inline">\(x\)</span>, then apply <span class="math inline">\(T\)</span>, we obtain <span class="math inline">\(T(x)\)</span>. Applying it again, we obtain <span class="math inline">\(T^2(x)\)</span>, then <span class="math inline">\(T^3(x)\)</span>, and so on. The sequence</p>
 <p><span class="math display">\[
@@ -283,13 +294,14 @@ x, \; T(x), \; T^2(x), \; T^3(x), \dots
 <p>To even begin answering this, we need some extra structure. Just having a set <span class="math inline">\(\mathcal{X}\)</span> and a map <span class="math inline">\(T\)</span> is too vague. What we want is a way to say something like: “most points behave this way.” And the right tool for that is <strong>measure theory</strong>.</p>
 <p>If we give our space a <a href="https://en.wikipedia.org/wiki/Measure_space">measure</a> (so we can talk about sizes of sets, probabilities, and so on), and if our transformation <span class="math inline">\(T\)</span> respects that measure, we might be able to answer our question. And hence we consider the setting of a <strong>measure-preserving system</strong>.</p>
 <p>And in this setting we have a deep and beautiful result: the <strong>Poincaré Recurrence Theorem</strong>, which tells us something quite striking about orbits. But before we get there, let’s first understand what measure-preserving systems actually are.</p>
-</section>
+<hr>
 <section id="measure-preserving-systems" class="level3">
 <h3 class="anchored" data-anchor-id="measure-preserving-systems">Measure Preserving Systems</h3>
 <blockquote class="blockquote">
 <p>Let <span class="math inline">\((\mathcal{X}, \beta, \mu)\)</span> be a measure space. A transformation <span class="math inline">\(T: \mathcal{X} \to \mathcal{X}\)</span> is <strong>measure-preserving</strong> if <span class="math inline">\(T\)</span> is measurable and if <span class="math inline">\(\mu(T^{-1}(\mathcal{B})) = \mu(\mathcal{B})\)</span> for all <span class="math inline">\(\mathcal{B} \in \beta.\)</span></p>
 </blockquote>
 <p>A measure-preserving transformation just rearranges the space without changing sizes of sets (like shuffling cards for instance: positions change, but nothing is lost or gained). We use <span class="math inline">\(T^{-1}\)</span> in the definition because preimages are always measurable (images need not be), and they correctly account for all points mapping into a set, even if <span class="math inline">\(T\)</span> is not one-to-one (for instance the <a href="https://en.wikipedia.org/wiki/Dyadic_transformation">doubling map</a> on a circle). Check that rotating the circle just shifts arcs around without changing their length, so the <a href="https://en.wikipedia.org/wiki/Lebesgue_measure">Lebesgue measure</a> is preserved making it a measure preserving transformation.</p>
+<hr>
 </section>
 <section id="poincarés-recurrence-theorem" class="level3">
 <h3 class="anchored" data-anchor-id="poincarés-recurrence-theorem">Poincaré’s Recurrence Theorem</h3>

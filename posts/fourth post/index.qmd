@@ -1,5 +1,6 @@
 ---
 title: "Reproducing Kernel Hilbert Spaces - An Introduction"
+author: Aparna Bade
 date: 2025-09-19
 categories: [Analysis]
 bibliography: ../../references.bib
@@ -9,8 +10,6 @@ nocite: |
   @aronszajn1950theory
   @wiki:rkhs
 ---
-
-### Introduction
 
 This post is Part II of the series on Reproducing Kernel Hilbert Spaces (RKHS). We have so far looked at [Positive Definite Kernels](/posts/welcome): special functions $k(x,y)$ that produce Gram matrices that are positive semidefinite for any finite set of points. At first glance, this definition may feel a little abstract making us wonder why we should even care about kernels satisfying such an inequality.
 
@@ -23,7 +22,9 @@ Why is it useful? Firstly it simply guarantees that point evaluation is always a
 
 In this post, we will understand the relation between positive definite kernels and reproducing kernel Hilbert spaces. We will see that every RKHS comes with a unique reproducing kernel which is positive definite, and that every positive definite kernel gives rise to a corresponding RKHS. 
 
-## Reproducing Kernel Hilbert Spaces (RKHS)
+---
+
+### Reproducing Kernel Hilbert Spaces (RKHS)
 
 > Let $\mathcal{X}$ be a set. A **reproducing kernel Hilbert space (RKHS)** over $\mathcal{X}$ is a Hilbert space $\mathcal{H}$ consisting of functions on $\mathcal{X}$ such that for each $x \in \mathcal{X}$ there is a function $k_x \in \mathcal{H}$ with the reproducing property
 $$

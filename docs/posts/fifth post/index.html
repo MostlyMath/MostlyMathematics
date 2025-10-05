@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Aparna Bade">
 <meta name="dcterms.date" content="2025-09-26">
 
 <title>Dynamics of irrational rotations – Mostly Mathematics</title>
@@ -183,6 +184,12 @@ window.Quarto = {
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Aparna Bade </p>
+            </div>
+    </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
@@ -245,6 +252,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/post6/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">C* Algebras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/welcome/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Positive Definite Kernels</span></a>
   </div>
@@ -264,8 +277,6 @@ window.Quarto = {
 
 
 
-<section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
 <p>We briefly looked at rotations on a circle as examples in <a href="\posts\my-first-post">Poincaré Recurrence</a> and <a href="\posts\post-with-code">The Birkhoff’s Ergodic Theorem</a>. In this post we will properly define rotations on a circle and look at an interesting dichotomy for rotations on a circle</p>
 <p>In multiplicative notation we represent the circle as the unit circle in the complex plane <span class="math display">\[
 S^1=\{z \in \mathbb{C}: |z|=1\} = \{e^{2\pi i \varphi} :\varphi \in \mathbb{R}\}
@@ -274,7 +285,7 @@ S^1=\{z \in \mathbb{C}: |z|=1\} = \{e^{2\pi i \varphi} :\varphi \in \mathbb{R}\}
 R_\alpha^n(z)=e^{2 \pi n \alpha}(z)\] or \[R_\alpha^n(x) = (x + n\alpha) \mod 1
 \]</span></p>
 <p>We will prove that <span class="math inline">\(\alpha\)</span> dichotomizes rotations based on it being a rational or an irrational number.</p>
-</section>
+<hr>
 <section id="dichotomy-for-rotations" class="level3">
 <h3 class="anchored" data-anchor-id="dichotomy-for-rotations">Dichotomy for rotations</h3>
 <blockquote class="blockquote">
@@ -287,6 +298,7 @@ R_\alpha^n(z)=e^{2 \pi n \alpha}(z)\] or \[R_\alpha^n(x) = (x + n\alpha) \mod 1
 To prove (2), If <span class="math inline">\(\alpha\)</span> is irrational, the orbit of any <span class="math inline">\(x \in \mathbb{R}\setminus\mathbb{Z}\)</span> is infinite and consists of distinct points. Given <span class="math inline">\(\varepsilon&gt;0\)</span>, choose <span class="math inline">\(N\)</span> so that <span class="math inline">\(1/N&lt;\varepsilon\)</span>. Among the first <span class="math inline">\(N+1\)</span> orbit points, two must lie within distance <span class="math inline">\(&lt;1/N\)</span>, so some iterate <span class="math inline">\(R_\alpha^m\)</span> is within <span class="math inline">\(\varepsilon\)</span> distance from <span class="math inline">\(R_\alpha^n\)</span>. Then we go on to prove that the orbit under <span class="math inline">\(R_\alpha\)</span> contains points spaced by arcs of length lesser than <span class="math inline">\(\varepsilon\)</span>, showing that for any <span class="math inline">\(y \in \mathbb{R}\setminus\mathbb{Z}\)</span> some iterate of <span class="math inline">\(x\)</span> lies within <span class="math inline">\(\varepsilon\)</span> of <span class="math inline">\(y\)</span>, making the orbit of <span class="math inline">\(x\)</span> dense.</p>
 </blockquote>
 <p>The complete proof can be found in the references.</p>
+<hr>
 </section>
 <section id="ergodicity" class="level3">
 <h3 class="anchored" data-anchor-id="ergodicity">Ergodicity</h3>
