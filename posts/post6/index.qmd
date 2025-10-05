@@ -2,7 +2,7 @@
 title: C* Algebras
 author: Aparna Bade
 date: 2025-10-04
-categories: [Analysis, Operator theory]
+categories: [Analysis, Operator Theory]
 bibliography: ../../references.bib
 nocite: | 
   @bollobas1999linear
