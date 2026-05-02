@@ -1,0 +1,78 @@
+---
+title: C* Algebras
+author: Aparna Bade
+date: 2025-10-04
+categories: [Analysis, Operator Theory]
+bibliography: ../../references.bib
+nocite: | 
+  @bollobas1999linear
+  @folland2016course
+  @narayanan_cstar_nptel
+---
+
+When I first came across the definition of a C* algebra, it looked like yet another list of axioms: a Banach algebra with an involution satisfying the C* identity. At first glance, this might seem pretty technical. But we do not add structure just for the sake of it. C* algebras are exactly the right framework for studying operators and functions in analysis.
+
+---
+
+### From Linear Algebra to Operator Algebras
+
+In linear algebra, we were used to working with vector spaces and linear transformations. In particular, if we consider finite dimensional vector space, everything behaves nicely. We will have that every operator is bounded, norms are equivalent, and matrices give us a concrete idea of what is happening.
+
+Once we move to **infinite-dimensional Hilbert spaces**, things get more complicated. We will not have that every operator is bounded, but bounded operators do form a rich algebra. They can be added, multiplied (composition), and scaled. We also have an adjoint operator.
+
+So a natural question one might have is if we can study this algebra of operators in a systematic way. This was the original motivation for C* algebras. Note that C* algebras do not necessarily have to be operators, they just have a similar structure. And here is a nice surprise: when a C* algebra happens to be commutative, it is basically the same as a space of continuous functions on some compact space. In fact, this space is hidden inside the algebra and can be recovered from it. This is the starting point of Gelfand theory which deeply connects algebra and topology. We will see more of this soon.
+
+---
+
+### C* algebras
+
+First let us see the defintion of a Banach algebra. Roughly speaking, it is a Banach space that also has an algebra structure. More concretely: 
+
+> A **Banach algebra** is a Banach space $\mathcal{A}$ over $\mathbb{C}$ with a multiplication $$
+\mathcal{A} \times \mathcal{A} \to \mathcal{A} $$ that is bilinear, associative, and satisfies the **submultiplicative inequality** $$
+\|ab\| \leq \|a\| \, \|b\| \quad \text{for all } a,b \in \mathcal{A}. $$
+
+This condition makes multiplication a continuous bilinear map, so the algebra structure and the norm interact nicely. Sometimes we also assume that there is a multiplicative identity $1 \in \mathcal{A}$. Now let us look at C* algebras.
+
+> A **C* algebra** is a complex Banach algebra $\mathcal{A}$ equipped with an involution ($*$), an operation $a \mapsto a^*$ such that $(a^*)^* = a, (ab)^* = b^* a^*$, and ${\lambda a}^* = \overline{\lambda} a^*$ which satisfy the **C* identity**: $$
+\|a^* a\| = \|a\|^2 \quad \text{for all } a \in \mathcal{A}. $$
+
+This identity is much stronger than it looks. It implies $\|a^*\| = \|a\|$, making the involution isometric.
+
+---
+
+### Examples
+
+1. **Continuous functions on a compact space.**
+   Let $\mathcal{X}$ be a compact Hausdorff space. The algebra $C(\mathcal{X})$ of complex-valued continuous functions becomes a C*algebra with $$
+   f^*(x) = \overline{f(x)}, \quad |f| = \sup_{x \in X} |f(x)|.$$ This is commutative and will be central when we will look at Gelfand theory.
+
+2. **Bounded operators on Hilbert space.**
+   Let $\mathcal{H}$ be a Hilbert space. The algebra $\mathcal{B}(\mathcal{H})$ of all bounded linear operators on $\mathcal{H}$ is a prototypical example of a C* algebra. Here $T^*$ is simply the adjoint operator. Most noncommutative examples arise as subalgebras of some $\mathcal{B}(\mathcal{H})$.
+
+---
+
+We shall discuss the **Gelfand–Mazur theorem** soon, which shows that the complex numbers are in some sense the **only** Banach division algebra. 
+
+
+
+
+
+::: {.comment-section}
+<!-- Giscus comments widget -->
+<script src="https://giscus.app/client.js"
+        data-repo="MostlyMath/MostlyMathematics"
+        data-repo-id="R_kgDOPrVY4w"
+        data-category="Comments"
+        data-category-id="DIC_kwDOPrVY484CvwcT"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+:::
