@@ -1,0 +1,29 @@
+---
+title: First Post After A While 
+author: Aparna Bade
+date: 2026-05-02
+categories: []
+---
+Hello everyone! It has been a while since I wrote anything here. This is just a test post. If you are reading this it means I still remember how to compile and work on this annoying thing and that my git didn't break and that this website is somehow still alive.
+
+Real posts soon (hopefully).
+
+
+::: {.comment-section}
+<!-- Giscus comments widget -->
+<script src="https://giscus.app/client.js"
+        data-repo="MostlyMath/MostlyMathematics"
+        data-repo-id="R_kgDOPrVY4w"
+        data-category="Comments"
+        data-category-id="DIC_kwDOPrVY484CvwcT"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+:::
